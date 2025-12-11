@@ -6,16 +6,16 @@ class script(object):
 ɪᴛ ɪs ᴇᴀsʏ ᴛᴏ ᴜsᴇ ᴍᴇ, ᴊᴜsᴛ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴍᴀᴋᴇ ᴍᴇ ᴀs ᴀᴅᴍɪɴ
 
 
-<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href=https://t.me/PrimeXBots>ᴘʀɪᴍᴇXʙᴏᴛꜱ</a></blockquote></b>"""
+<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href=https://t.me/Prime_Movie_Request_bot>ʙᴏᴛꜱ</a></blockquote></b>"""
     
     FEATURES_TXT = """<b>ʜᴇʀᴇ ɪꜱ ᴀʟʟ ᴍʏ ꜰᴜɴᴛɪᴏɴꜱ.</b>"""
 
     ABOUT_TXT = """<b>╭────[ ᴍʏ ᴅᴇᴛᴀɪʟs ]────⍟
 ├⍟ ᴍʏ ɴᴀᴍᴇ : <a href=https://t.me/{}>{}</a>
-├⍟ ᴏᴡɴᴇʀ : <a href={}>ᴍʀ.ᴘʀɪᴍᴇ</a> 
-├⍟ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/PrimeXBots'>ᴘʀɪᴍᴇXʙᴏᴛꜱ</a> 
-├⍟ ᴍᴀɪɴ ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/PrimeCineZone'>Pʀɪᴍᴇ CɪɴᴇZᴏɴᴇ</a>
-├⍟ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ : <a href='https://t.me/Prime_Botz_Support'>ᴘʀɪᴍᴇ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> 
+├⍟ ᴏᴡɴᴇʀ : <a href={}>ᴘʀɪᴍᴇ</a> 
+├⍟ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/+wLSbBB3m3oBkMzE9'>ʙᴏᴛꜱ</a> 
+├⍟ ᴍᴀɪɴ ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/+IyGqymZL_qtkMTk1'>CɪɴᴇZᴏɴᴇ</a>
+├⍟ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ : <a href='https://t.me/Prime_Movie_YT_Group'>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> 
 ├⍟ ʟɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>ᴘʏʀᴏɢʀᴀᴍ</a>
 ├⍟ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>ᴘʏᴛʜᴏɴ 𝟹</a> 
 ├⍟ ᴅᴀᴛᴀʙᴀꜱᴇ : <a href='https://www.mongodb.com/'>ᴍᴏɴɢᴏ ᴅʙ</a> 
@@ -103,11 +103,11 @@ class script(object):
 
 <code>/set_shortner_3 droplink.co d1e52488bac3d8297d89f895ed8ec64fd04253f8</code>
 
-<code>/set_tutorial https://t.me/Prime_Movie_Watch_Dawnload/75</code>
+<code>/set_tutorial https://t.me/Prime_MovieWatch_Dawnload/75</code>
 
-<code>/set_tutorial_2 https://t.me/Prime_Movie_Watch_Dawnload/71</code>
+<code>/set_tutorial_2 https://t.me/Prime_MovieWatch_Dawnload/71</code>
 
-<code>/set_tutorial_3 https://t.me/Prime_Movie_Watch_Dawnload/71</code>
+<code>/set_tutorial_3 https://t.me/Prime_MovieWatch_Dawnload/71</code>
 
 <code>/set_time 300</code>
 
@@ -313,7 +313,7 @@ class script(object):
 • /plink - ᴊᴜꜱᴛ ʟɪᴋᴇ /link, ʙᴜᴛ ᴛʜᴇ ꜰɪʟᴇ ᴡɪʟʟ ʙᴇ ꜱᴇɴᴅ ᴡɪᴛʜ ꜰᴏʀᴡᴏʀᴅ ʀᴇꜱᴛʀɪᴄᴛɪᴏɴ."""
     
        
-    LOG_TEXT_G = """#NewGroup @iPapkornprimebot
+    LOG_TEXT_G = """#NewGroups @FatherMovieMasala_bot
     
 Gʀᴏᴜᴘ = {}
 Iᴅ = <code>{}</code>
@@ -321,7 +321,7 @@ Tᴏᴛᴀʟ Mᴇᴍʙᴇʀs = <code>{}</code>
 Aᴅᴅᴇᴅ Bʏ - {}
 """
 
-    LOG_TEXT_P = """#NewUser @iPapkornprimebot
+    LOG_TEXT_P = """#NewUsers @FatherMovieMasala_bot
     
 Iᴅ - <code>{}</code>
 Nᴀᴍᴇ - {}
@@ -363,21 +363,21 @@ Nᴀᴍᴇ - {}
     PREMIUM_TEXT = """<blockquote>🎖️ <b>ᴀᴠᴀɪʟᴀʙʟᴇ ᴘʟᴀɴs</b></blockquote>
 
  ╭━━━━━━━━━━━━━━━╮\n
- ❏  20₹/৳    ➠     𝟽 ᴅᴀʏs
- ❏  35₹/৳    ➠    𝟷𝟻 ᴅᴀʏs
- ❏  50₹/৳    ➠    𝟶𝟷 ᴍᴏɴᴛʜ
- ❏ 130₹/৳    ➠    𝟶𝟹 ᴍᴏɴᴛʜs
- ❏ 250₹/৳    ➠    𝟶𝟼 ᴍᴏɴᴛʜs
- ❏ 370₹/৳    ➠    𝟷𝟸 ᴍᴏɴᴛʜs \n 
+ ❏  20₹/    ➠     𝟽 ᴅᴀʏs
+ ❏  35₹/    ➠    𝟷𝟻 ᴅᴀʏs
+ ❏  50₹/    ➠    𝟶𝟷 ᴍᴏɴᴛʜ
+ ❏ 130₹/    ➠    𝟶𝟹 ᴍᴏɴᴛʜs
+ ❏ 250₹/    ➠    𝟶𝟼 ᴍᴏɴᴛʜs
+ ❏ 370₹/    ➠    𝟷𝟸 ᴍᴏɴᴛʜs \n 
  ╰━━━━━━━━━━━━━━━╯
 
-💰 ᴜᴘɪ ɪᴅ: <code>6296899873@axl</code>
+💰 ᴜᴘɪ ɪᴅ: <code>629699873@axl</code>
 
-💵 𝗔𝗡𝗬 𝗖𝗢𝗨𝗡𝗧𝗥𝗬 𝗔𝗟𝗟 𝗣𝗔𝗬𝗠𝗘𝗡𝗧 𝗠𝗘𝗧𝗛𝗢𝗗 𝗔𝗩𝗔𝗜𝗟𝗔𝗕𝗟𝗘. যদি বিকাশ বা 𝗤𝗥 কোড ছাড়া অথবা অন্য কিছু মাধ্যমে\n পেমেন্ট করতে চাইলে অথবা আরো কিছু জানার থাকলে\n𝗖𝗢𝗡𝗡𝗘𝗖𝗧 𝗔𝗗𝗠𝗜𝗡 ➠ <a href='https://t.me/Prime_Admin_Support_ProBot'>𝐌𝐑.𝐏𝐑𝐈𝐌𝐄</a> 
+💵 𝗔𝗡𝗬 𝗖𝗢𝗨𝗡𝗧𝗥𝗬 𝗔𝗟𝗟 𝗣𝗔𝗬𝗠𝗘𝗡𝗧 𝗠𝗘𝗧𝗛𝗢𝗗 𝗔𝗩𝗔𝗜𝗟𝗔𝗕𝗟𝗘. যদি বিকাশ বা 𝗤𝗥 কোড ছাড়া অথবা অন্য কিছু মাধ্যমে\n পেমেন্ট করতে চাইলে অথবা আরো কিছু জানার থাকলে\n𝗖𝗢𝗡𝗡𝗘𝗖𝗧 𝗔𝗗𝗠𝗜𝗡 ➠ <a href='https://t.me/Prime_Movie_Request_bot'>WONER</a> 
  
 ⛽️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ: /myplan
 
-🏷️ <a href='https://t.me/Prime_Admin_Support_ProBot'>ᴘʀᴇᴍɪᴜᴍ ᴘʀᴏᴏꜰ</a> 👇👇
+🏷️ <a href='https://t.me/Prime_Movie_Request_bot'>ᴘʀᴇᴍɪᴜᴍ ᴘʀᴏᴏꜰ</a> 👇👇
 
 ‼️ ᴍᴜsᴛ sᴇɴᴅ sᴄʀᴇᴇɴsʜᴏᴛ ᴀғᴛᴇʀ ᴘᴀʏᴍᴇɴᴛ.
 ‼️ ɢɪᴠᴇ ᴜꜱ ꜱᴏᴍᴇᴛɪᴍᴇ ᴛᴏ ᴀᴅᴅ ʏᴏᴜ ɪɴ ᴘʀᴇᴍɪᴜᴍ ʟɪꜱᴛ.."""
@@ -407,21 +407,21 @@ Nᴀᴍᴇ - {}
 ‼️ ᴀꜰᴛᴇʀ ꜱᴇɴᴅɪɴɢ ꜱᴄʀᴇᴇɴꜱʜᴏᴛ ɢɪᴠᴇ ᴜꜱ ꜱᴏᴍᴇᴛɪᴍᴇꜱ ᴛᴏ ᴀᴅᴅ ʏᴏᴜ ɪɴ ᴘʀᴇᴍɪᴜᴍ ʟɪꜱᴛ."""   
       
     NORSLTS = """ 
-#NoResults @iPapkornprimebot
+#NoResults @FatherMovieMasala_bot
 
 Iᴅ : <code>{}</code>
 Nᴀᴍᴇ : {}
 
 Mᴇꜱꜱᴀɢᴇ : <b>{}</b>"""
     
-    CAPTION = """ <b>🗃️ ꜰɪʟᴇ ɴᴀᴍᴇ : @PrimeCineHub <a href='https://t.me/PrimeCineZone'>{file_name}</a></b>
+    CAPTION = """ <b>🗃️ ꜰɪʟᴇ ɴᴀᴍᴇ : @Prime_Movie_YT_Group <a href='https://t.me/Prime_Movie_YT_Group'>{file_name}</a></b>
 
 ╭─────────────⍟
 ├📦 ꜰɪʟᴇ sɪᴢᴇ : {file_size} 
 ╰─────────────⍟
 
 <blockquote>╭─━━━━⌁ ᴇɴɢᴀɢᴇ ᴡɪᴛʜ ᴘᴏꜱᴛ ⌁━━━━━─╮
-├⚜️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➠ <a href='https://t.me/addlist/ceobDOjc7202ZmVl'>ᴘʀɪᴍᴇ ᴄɪɴᴇᴢᴏɴᴇ 🍿</a>
+├⚜️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➠ <a href='https://t.me/Prime_Movie_YT_Group'>ᴘʀɪᴍᴇ ᴄɪɴᴇᴢᴏɴᴇ 🍿</a>
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━╯</blockquote>
 """
     
