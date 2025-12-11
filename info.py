@@ -41,27 +41,27 @@ support_chat_id = environ.get('SUPPORT_CHAT_ID', '-1002395758041') #Support Chat
 SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(support_chat_id) else None
 
 DATABASE_URI = environ.get('DATABASE_URI', "") #MongoDB Url
-DATABASE_NAME = environ.get('DATABASE_NAME', "")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', 'techvjcollection')
+DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'dreamcinezone_files')
 
 # If MULTIPLE_DB Is True Then Fill DATABASE_URI2 Value Else You Will Get Error.
 MULTIPLE_DB = is_enabled(os.environ.get('MULTIPLE_DB', "False"), False) # Type True For Turn On MULTIPLE DB FUNTION 
 DATABASE_URI2 = environ.get('DATABASE_URI2', "")
 
-GRP_LNK = environ.get('GRP_LNK', 'https://t.me/+OG3sftDEbZ9kMzFl')
-CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/PrimeCineZone')
-OWNER_LNK = environ.get('OWNER_LNK', 'https://t.me/Prime_Nayem')
-UPDATE_CHANNEL_LNK = environ.get('UPDATE_CHANNEL_LNK', 'https://t.me/PrimeXBots')
-OWNER_BOTZ = environ.get('OWNER_BOTZ', 'https://t.me/Prime_Admin_Support_ProBot')
-OWNER_SUPP = environ.get('OWNER_SUPP', 'https://t.me/Prime_Support_Group')
+GRP_LNK = environ.get('GRP_LNK', 'https://t.me/ClipMateBhai')
+CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/ClipMateBhai')
+OWNER_LNK = environ.get('OWNER_LNK', 'https://t.me/Prime_Movie_Request_bot')
+UPDATE_CHANNEL_LNK = environ.get('UPDATE_CHANNEL_LNK', 'https://t.me/ClipMateBhai')
+OWNER_BOTZ = environ.get('OWNER_BOTZ', 'https://t.me/Prime_Movie_Request_bot')
+OWNER_SUPP = environ.get('OWNER_SUPP', 'https://t.me/Prime_Movie_Request_bot')
 
 #Force Subscription Channel (Put Same Channel Id In Both Veriables)
-AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', '-1002276144264')) #fell back 0
-AUTH_REQ_CHANNEL = int(environ.get('AUTH_REQ_CHANNEL', '-1002276144264')) #same
+AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', '-100')) #fell back 0
+AUTH_REQ_CHANNEL = int(environ.get('AUTH_REQ_CHANNEL', '-100')) #same
 
 IS_VERIFY = is_enabled('IS_VERIFY', False)
-LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002196408894')) #Verification Channel Id 
-LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1002196408894')) #If Anyone Set Your Bot In Any Group And Set Shortner In That Group Then In This Channel The All Details Come
+LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1001860172104')) #Verification Channel Id 
+LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1001860172104')) #If Anyone Set Your Bot In Any Group And Set Shortner In That Group Then In This Channel The All Details Come
 VERIFY_IMG = environ.get("VERIFY_IMG", "https://i.ibb.co/Qv8KXPML/photo-2025-04-20-06-27-44-7495278325967880200.jpg")
 
 TUTORIAL = environ.get("TUTORIAL", "https://t.me/Prime_Movie_Watch_Dawnload/76")
@@ -89,8 +89,8 @@ NO_RESULTS_MSG = bool(environ.get("NO_RESULTS_MSG", True))
 MAX_B_TN = environ.get("MAX_B_TN", "8")
 MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)
 PORT = environ.get("PORT", "8080")
-MSG_ALRT = environ.get('MSG_ALRT', 'Pᴏᴡᴇʀᴇᴅ ʙʏ: @PʀɪᴍᴇXBᴏᴛs 💙')
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/Prime_Support_Group') #Support Chat Link with https://
+MSG_ALRT = environ.get('MSG_ALRT', 'Pᴏᴡᴇʀᴇᴅ ʙʏ: @Prime_Movie_Request_bot 💙')
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/Prime_Movie_Request_bot') #Support Chat Link with https://
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
 AUTO_FFILTER = is_enabled((environ.get('AUTO_FFILTER', "True")), True)
