@@ -780,7 +780,7 @@ async def handle_actions(client, callback_query):
             )
             await client.send_photo(
                 chat_id=user_id,
-                photo="https://i.postimg.cc/fySmH2GT/IMG-20250512-060032-257.jpg",
+                photo="https://image.zaw-myo.workers.dev/image/bcb2272e-7069-4c3d-86c4-13c38c06fd3a",
                 caption=f"{user_mention}\n{search_line}{message_text}",
                 reply_markup=keyboard
             )
