@@ -27,9 +27,9 @@ logger = logging.getLogger(__name__)
 TIMEZONE = "Asia/Dhaka"
 BATCH_FILES = {}
 
-#EXTRA_CHANNEL = -1002043502363
-#EXTRA_CHANNELP = -1002245813234
-EXTRA_CHANNELQ = -1002323796637
+#EXTRA_CHANNEL = -1002314687215
+#EXTRA_CHANNELP = -1002314687215
+EXTRA_CHANNELQ = -1002314687215
 
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client, message):
@@ -109,7 +109,7 @@ async def start(client, message):
                 "📤 ᴅɪʀᴇᴄᴛ ꜰɪʟᴇ ꜱʜᴀʀɪɴɢ ꜰʀᴏᴍ ᴍᴀɴʏ ᴅᴀᴛᴀʙᴀꜱᴇꜱ\n"
                 "🚫 ᴀᴅ-ꜰʀᴇᴇ ᴇxᴘᴇʀɪᴇɴᴄᴇ ꜰᴏʀ ᴘʀᴇᴍɪᴜᴍ ᴜꜱᴇʀꜱ\n\n"
 
-                "🙏 <i>ᴛʜᴀɴᴋ ʏᴏᴜ ꜰᴏʀ ᴜꜱɪɴɢ</i> <b>@iPapkornprimebot</b> 🌟\n"
+                "🙏 <i>ᴛʜᴀɴᴋ ʏᴏᴜ ꜰᴏʀ ᴜꜱɪɴɢ</i> <b>@FatherMovieMasala_bot</b> 🌟\n"
                 "⚡ ᴍᴀᴋᴇ ꜱᴜʀᴇ ᴛᴏ ꜱʜᴀʀᴇ ᴡɪᴛʜ ꜰʀɪᴇɴᴅꜱ 💌",            
                 reply_markup=InlineKeyboardMarkup(
                     [
@@ -153,7 +153,7 @@ async def start(client, message):
                     InlineKeyboardButton('• ʜᴇʟᴘ •', callback_data='features'),
                     InlineKeyboardButton('• ᴀʙᴏᴜᴛ ʙᴏᴛᴢ •', callback_data='botz_about') 
                 ],[
-                    InlineKeyboardButton('✧ ᴄʀᴇᴀᴛᴏʀ ✧', url="https://t.me/Prime_Nayem")  
+                    InlineKeyboardButton('✧ ᴄʀᴇᴀᴛᴏʀ ✧', url="https://t.me/Prime_Movie_Request_bot")  
                 ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
@@ -328,7 +328,7 @@ async def start(client, message):
         except Exception as e:
             await log_error(client, f"Got Error In Verification Funtion.\n\n Error - {e}")
             print(f"Error In Verification - {e}")
-            await message.reply_text(f"Something Want Wrong ! Message Here - @Prime_Botz_Support")
+            await message.reply_text(f"Something Want Wrong ! Message Here - @Prime_Movie_Request_bot")
 
     if data.split("-", 1)[0] == "BATCH":
         sts = await message.reply("<b>Please wait...</b>")
