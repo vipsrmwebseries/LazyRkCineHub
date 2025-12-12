@@ -424,14 +424,19 @@ Mᴇꜱꜱᴀɢᴇ : <b>{}</b>"""
 """
     
     IMDB_TEMPLATE_TXT = """
-<b>🏷 Title</b>: <a href={url}>{title}</a>
-🎭 Genres: {genres}
-� Year: <a href={url}/releaseinfo>{year}</a>
-🌟 Rating: <a href={url}/ratings>{rating}</a> / 10 (based on {votes} user ratings.)
-📀 RunTime: {runtime} Minutes
+<blockquote><b>💯 MOVIE NAME PER CLICK KARO COPY HO JAYAGA NAME USKE BADH GROUP PE JAKE SEARCH KARO👇👇</b></blockquote>
 
-⏰Result Shown in: {remaining_seconds} <i>seconds</i> 🔥
-Requested by : {message.from_user.mention}</b>"""    
+♻️ <b><i>File name:</i></b> <code>{}</code>
+🖥️ <b><i>Category:</i></b> {}
+🩻 <b><i>Year:</i></b> <code>{}</code>
+💿 <b><i>Format:</i></b> <code>{}</code>
+🌐 <b><i>Audio:</i></b> <code>{}</code>
+
+━━━━━━━━━━━━━━━━━━━
+🔍 <b>Search Movies Here:</b> <a href="https://t.me/Prime_Movie_YT_Group">🎞️ Prime_Movie_YT_Group</a>
+━━━━━━━━━━━━━━━━━━━
+
+<blockquote>⚡ Powered by <b>@ClipMateBhai</b></blockquote>"""    
 
     RESTART_TXT = """
 <b>{} ʙᴏᴛ ʀᴇꜱᴛᴀʀᴛᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ !
