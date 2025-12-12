@@ -41,7 +41,7 @@ import string
 import tracemalloc
 
 import os
-req_channel = int(os.environ.get('REQ_CHANNEL', -1002120012639))
+req_channel = int(os.environ.get('REQ_CHANNEL', -1002580860502))
 
 tracemalloc.start()
 
