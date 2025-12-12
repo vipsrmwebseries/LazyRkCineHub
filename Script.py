@@ -259,7 +259,7 @@ class script(object):
 👉 Click /plan to upgrade to Premium. (প্রিমিয়ামে আপগ্রেড করতে /plan এ ক্লিক করুন।)</b>"""
     
 
-    VERIFIED_LOG_TEXT = """ᴜꜱᴇʀ ᴠᴇʀɪꜰɪᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ @iPapkornprimebot ✓
+    VERIFIED_LOG_TEXT = """ᴜꜱᴇʀ ᴠᴇʀɪꜰɪᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ @FatherMovieMasala_bot ✓
 
 👤 ɴᴀᴍᴇ:- {} [ <code>{}</code> ]
 
@@ -363,12 +363,10 @@ Nᴀᴍᴇ - {}
     PREMIUM_TEXT = """<blockquote>🎖️ <b>ᴀᴠᴀɪʟᴀʙʟᴇ ᴘʟᴀɴs</b></blockquote>
 
  ╭━━━━━━━━━━━━━━━╮\n
- ❏  20₹/    ➠     𝟽 ᴅᴀʏs
- ❏  35₹/    ➠    𝟷𝟻 ᴅᴀʏs
- ❏  50₹/    ➠    𝟶𝟷 ᴍᴏɴᴛʜ
- ❏ 130₹/    ➠    𝟶𝟹 ᴍᴏɴᴛʜs
- ❏ 250₹/    ➠    𝟶𝟼 ᴍᴏɴᴛʜs
- ❏ 370₹/    ➠    𝟷𝟸 ᴍᴏɴᴛʜs \n 
+ ❏  15₹/    ➠     15 ᴅᴀʏs
+ ❏  30₹/    ➠     0𝟷 ᴍᴏɴᴛʜ
+ ❏  50₹/    ➠     𝟶2 ᴍᴏɴᴛʜ 
+ ❏  80₹/    ➠     03 ᴍᴏɴᴛʜ \n 
  ╰━━━━━━━━━━━━━━━╯
 
 💰 ᴜᴘɪ ɪᴅ: <code>629699873@axl</code>
