@@ -178,7 +178,7 @@ async def send_movie_update(bot, file_name, caption):
             InlineKeyboardButton(f"👎 {reaction_counts[unique_id]['👎']}", callback_data=f"r_{unique_id}_d"),
             InlineKeyboardButton(f"🔥 {reaction_counts[unique_id]['🔥']}", callback_data=f"r_{unique_id}_f")
         ], [
-            InlineKeyboardButton('📂 Movie Search 📂', url=f'https://t.me/Prime_Movie_YT_Group')
+            InlineKeyboardButton('📂 𝙋𝘼𝙄𝘿 𝙂𝙍𝙊𝙐𝙋 📂', url=f'https://cosmofeed.com/vig/6901003d665e510013773eed')
         ]]
 
         if poster:
@@ -229,7 +229,7 @@ async def reaction_handler(client, query):
             InlineKeyboardButton(f"👎 {reaction_counts[unique_id]['👎']}", callback_data=f"r_{unique_id}_d"),
             InlineKeyboardButton(f"🔥 {reaction_counts[unique_id]['🔥']}", callback_data=f"r_{unique_id}_f")
         ],[
-            InlineKeyboardButton('📂 Movie Search 📂', url=f'https://t.me/Prime_Movie_YT_Group')
+            InlineKeyboardButton('📂 𝙋𝘼𝙄𝘿 𝙂𝙍𝙊𝙐𝙋 📂', url=f'https://cosmofeed.com/vig/6901003d665e510013773eed')
         ]]
         await query.message.edit_reply_markup(reply_markup=InlineKeyboardMarkup(updated_buttons))
     except Exception as e:
