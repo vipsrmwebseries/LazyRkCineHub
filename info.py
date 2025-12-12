@@ -69,14 +69,14 @@ TUTORIAL_2 = environ.get("TUTORIAL_2", "https://t.me/Prime_Movie_Watch_Dawnload/
 TUTORIAL_3 = environ.get("TUTORIAL_3", "https://t.me/Prime_Movie_Watch_Dawnload/76")
 
 # Verification (Must Fill All Veriables. Else You Got Error
-SHORTENER_API = environ.get("SHORTENER_API", "608fbfe60758ecdfcaf5a30f3a076ab2416a3031")
-SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", "droplink.co")
+SHORTENER_API = environ.get("SHORTENER_API", "74e17137f92e31cc0406fab6fcf3131bc61f8ecc")
+SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", "https://linkshortify.com")
 
-SHORTENER_API2 = environ.get("SHORTENER_API2", "608fbfe60758ecdfcaf5a30f3a076ab2416a3031")
-SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", "droplink.co")
+SHORTENER_API2 = environ.get("SHORTENER_API2", "")
+SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", "")
 
-SHORTENER_API3 = environ.get("SHORTENER_API3", "608fbfe60758ecdfcaf5a30f3a076ab2416a3031")
-SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", "droplink.co")
+SHORTENER_API3 = environ.get("SHORTENER_API3", "")
+SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", "")
 
 
 TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "43200"))
