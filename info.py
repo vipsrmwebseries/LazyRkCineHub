@@ -48,7 +48,7 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'dreamcinezone_files')
 MULTIPLE_DB = is_enabled(os.environ.get('MULTIPLE_DB', "False"), False) # Type True For Turn On MULTIPLE DB FUNTION 
 DATABASE_URI2 = environ.get('DATABASE_URI2', "")
 
-GRP_LNK = environ.get('GRP_LNK', 'https://t.me/Prime_Movie_YT_Group')
+GRP_LNK = environ.get('GRP_LNK', 'https://cosmofeed.com/vig/6901003d665e510013773eed')
 CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/+IyGqymZL_qtkMTk1')
 OWNER_LNK = environ.get('OWNER_LNK', 'https://t.me/Prime_Movie_Request_bot')
 UPDATE_CHANNEL_LNK = environ.get('UPDATE_CHANNEL_LNK', 'https://t.me/+wLSbBB3m3oBkMzE9')
@@ -60,8 +60,8 @@ AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', '-1002076498781')) #fell back 0
 AUTH_REQ_CHANNEL = int(environ.get('AUTH_REQ_CHANNEL', '-1002314687215')) #same
 
 IS_VERIFY = is_enabled('IS_VERIFY', False)
-LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002076498781')) #Verification Channel Id 
-LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1002076498781')) #If Anyone Set Your Bot In Any Group And Set Shortner In That Group Then In This Channel The All Details Come
+LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1001860172104')) #Verification Channel Id 
+LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1001860172104')) #If Anyone Set Your Bot In Any Group And Set Shortner In That Group Then In This Channel The All Details Come
 VERIFY_IMG = environ.get("VERIFY_IMG", "https://i.ibb.co/Qv8KXPML/photo-2025-04-20-06-27-44-7495278325967880200.jpg")
 
 TUTORIAL = environ.get("TUTORIAL", "https://t.me/Prime_Movie_Watch_Dawnload/76")
