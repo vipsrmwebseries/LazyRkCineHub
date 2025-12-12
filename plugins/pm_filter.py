@@ -1786,7 +1786,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "source":
         await query.message.delete()
         buttons = [
-            [InlineKeyboardButton('♚ ᴀᴅᴍɪɴ ♚', url='https://t.me/Prime_Admin_Support_ProBot')],
+            [InlineKeyboardButton('♚ ᴀᴅᴍɪɴ ♚', url='https://t.me/Prime_Movie_Request_bot')],
             [InlineKeyboardButton('🚫 ᴄʟᴏꜱᴇ 🚫', callback_data='close_data')]
         ]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -1799,7 +1799,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             "⇒ ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ - ♚ ᴀᴅᴍɪɴ ♚."
         )
         await query.message.reply_photo(
-            photo="https://i.postimg.cc/hvFZ93Ct/file-000000004188623081269b2440872960.png",
+            photo="https://image.zaw-myo.workers.dev/image/b40816a3-5777-4150-9486-54ca6fa1ca2c",
             caption=text_msg,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
