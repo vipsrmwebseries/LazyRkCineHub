@@ -178,7 +178,7 @@ async def send_movie_update(bot, file_name, caption):
             InlineKeyboardButton(f"👎 {reaction_counts[unique_id]['👎']}", callback_data=f"r_{unique_id}_d"),
             InlineKeyboardButton(f"🔥 {reaction_counts[unique_id]['🔥']}", callback_data=f"r_{unique_id}_f")
         ], [
-            InlineKeyboardButton('📂 𝙋𝘼𝙄𝘿 𝙂𝙍𝙊𝙐𝙋 📂', url=f'https://t.me/SpyRadioHdMOVIE')
+            InlineKeyboardButton('📂 Paid Group 📂', url=f'https://t.me/SpyRadioHdMOVIE')
         ]]
 
         if poster:
@@ -229,7 +229,7 @@ async def reaction_handler(client, query):
             InlineKeyboardButton(f"👎 {reaction_counts[unique_id]['👎']}", callback_data=f"r_{unique_id}_d"),
             InlineKeyboardButton(f"🔥 {reaction_counts[unique_id]['🔥']}", callback_data=f"r_{unique_id}_f")
         ],[
-            InlineKeyboardButton('📂 𝙋𝘼𝙄𝘿 𝙂𝙍𝙊𝙐𝙋 📂', url=f'https://t.me/SpyRadioHdMOVIE')
+            InlineKeyboardButton('📂 Paid Group 📂', url=f'https://t.me/SpyRadioHdMOVIE')
         ]]
         await query.message.edit_reply_markup(reply_markup=InlineKeyboardMarkup(updated_buttons))
     except Exception as e:
