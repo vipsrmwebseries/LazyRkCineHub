@@ -412,14 +412,14 @@ Nᴀᴍᴇ : {}
 
 Mᴇꜱꜱᴀɢᴇ : <b>{}</b>"""
     
-    CAPTION = """ <b>🗃️ ꜰɪʟᴇ ɴᴀᴍᴇ : @Prime_Movie_YT_Group <a href='https://t.me/Prime_Movie_YT_Group'>{file_name}</a></b>
+    CAPTION = """ <b>🗃️ ꜰɪʟᴇ ɴᴀᴍᴇ : @SpyRadioHdMOVIE <a href='https://t.me/SpyRadioHdMOVIE'>{file_name}</a></b>
 
 ╭─────────────⍟
 ├📦 ꜰɪʟᴇ sɪᴢᴇ : {file_size} 
 ╰─────────────⍟
 
 <blockquote>╭─━━━━⌁ ᴇɴɢᴀɢᴇ ᴡɪᴛʜ ᴘᴏꜱᴛ ⌁━━━━━─╮
-├⚜️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➠ <a href='https://t.me/Prime_Movie_YT_Group'>ᴘʀɪᴍᴇ ᴄɪɴᴇᴢᴏɴᴇ 🍿</a>
+├⚜️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➠ <a href='https://t.me/SpyRadioHdMOVIE'>ᴄɪɴᴇᴢᴏɴᴇ 🍿</a>
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━╯</blockquote>
 """
     
