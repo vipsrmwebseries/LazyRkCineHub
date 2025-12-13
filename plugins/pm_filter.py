@@ -776,7 +776,7 @@ async def handle_actions(client, callback_query):
     "যদি এখনও জয়েন না হয়ে থাকেন, তাহলে নিচের বাটনে ক্লিক করে একবারেই সকল চ্যানেল এবং গ্রুপে জয়েন হতে পারবেন।</i>"
                 )
             keyboard = InlineKeyboardMarkup(
-                [[InlineKeyboardButton("Jᴏɪɴ ᴏᴜʀ ᴀʟʟ ᴄʜᴀɴɴᴇʟs ᴀɴᴅ ɢʀᴏᴜᴘs ɪɴ ᴏɴᴇ ᴄʟɪᴄᴋ", url=f"https://t.me/addlist/ceobDOjc7202ZmVl")]]
+                [[InlineKeyboardButton("Jᴏɪɴ ᴏᴜʀ ᴀʟʟ ᴄʜᴀɴɴᴇʟs ᴀɴᴅ ɢʀᴏᴜᴘs ɪɴ ᴏɴᴇ ᴄʟɪᴄᴋ", url=f"https://t.me/addlist/1bnWgUqHWuQwNDk1")]]
             )
             await client.send_photo(
                 chat_id=user_id,
