@@ -889,7 +889,7 @@ async def handle_actions(client, callback_query):
     "নিচের বাটনে ক্লিক করে আপনি সরাসরি এডমিনের সাথে যোগাযোগ করতে পারবেন।</i>"
             )
             keyboard = InlineKeyboardMarkup(  
-                [[InlineKeyboardButton("💬 Cᴏɴᴛᴀᴄᴛ ᴀᴅᴍɪɴ 📞", url=f"https://t.me/Prime_Admin_Support_ProBot")]]  
+                [[InlineKeyboardButton("💬 Cᴏɴᴛᴀᴄᴛ ᴀᴅᴍɪɴ 📞", url=f"https://t.me/Prime_Movie_Request_bot")]]  
             )  
             await client.send_photo(  
                 chat_id=user_id,  
@@ -1420,7 +1420,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             silent_stream = f"{URL}watch/{str(silent_msg.id)}/{quote_plus(get_name(silent_msg))}?hash={get_hash(silent_msg)}"
             silent_download = f"{URL}{str(silent_msg.id)}/{quote_plus(get_name(silent_msg))}?hash={get_hash(silent_msg)}"
             await silent_msg.reply_text(
-                text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ @iPapkornprimebot ☠︎⚔ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {fileName}",
+                text=f"•• ʟɪɴᴋ ɢᴇɴᴇʀᴀᴛᴇᴅ @Prime_Movie_Request_bot ☠︎⚔ ꜰᴏʀ ɪᴅ #{user_id} \n•• ᴜꜱᴇʀɴᴀᴍᴇ : {username} \n\n•• ᖴᎥᒪᗴ Nᗩᗰᗴ : {fileName}",
                 quote=True,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🚀 Fast Download 🚀", url=silent_download),  # we download Link
