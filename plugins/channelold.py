@@ -134,7 +134,7 @@ async def send_movie_update(bot, file_name, caption):
 
         info_text = (
                 "╭━━━❰ 🎬 ꜰᴏʀ ʏᴏᴜʀ ᴇɴᴛᴇʀᴛᴀɪɴᴍᴇɴᴛ 🎭 ❱━⊱\n"
-                f"┃🎬 ᴛɪᴛʟᴇ    : </i></b> <code>{}</code>\n"
+                f"┃🎬 ᴛɪᴛʟᴇ    : {file_name}\n"
                 f"┃🎥 Qᴜᴀʟɪᴛʏ  : {quality}\n"
                 f"┃🔊 ʟᴀɴɢᴜᴀɢᴇ : {language}\n"
                 f"┃🗒️ ʀᴇʟᴇᴀsᴇ  : {year}"
