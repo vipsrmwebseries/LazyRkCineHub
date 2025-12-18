@@ -412,7 +412,7 @@ Nᴀᴍᴇ : {}
 
 Mᴇꜱꜱᴀɢᴇ : <b>{}</b>"""
     
-    CAPTION = """ <b>🗃️ ꜰɪʟᴇ ɴᴀᴍᴇ : @SpyRadioHdMOVIE <a href='https://t.me/SpyRadioHdMOVIE'>{file_name}</a></b>
+    CAPTION = """ <b>🗃️ ꜰɪʟᴇ ɴᴀᴍᴇ : @ClipMateBhai <a href='https://t.me/SpyRadioHdMOVIE'>{file_name}</a></b>
 
 ╭─────────────⍟
 ├📦 ꜰɪʟᴇ sɪᴢᴇ : {file_size} 
