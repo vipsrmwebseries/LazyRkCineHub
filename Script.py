@@ -15,7 +15,7 @@ class script(object):
 ├⍟ ᴏᴡɴᴇʀ : <a href={}>ᴘʀɪᴍᴇ</a> 
 ├⍟ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/+rzf7E7jwo001OTg1'>ʙᴏᴛꜱ</a> 
 ├⍟ ᴍᴀɪɴ ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/+rzf7E7jwo001OTg1'>CɪɴᴇZᴏɴᴇ</a>
-├⍟ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ : <a href='https://t.me/Prime_Movie_YT_Group'>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> 
+├⍟ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ : <a href='https://t.me/Rimi5605'>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> 
 ├⍟ ʟɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>ᴘʏʀᴏɢʀᴀᴍ</a>
 ├⍟ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>ᴘʏᴛʜᴏɴ 𝟹</a> 
 ├⍟ ᴅᴀᴛᴀʙᴀꜱᴇ : <a href='https://www.mongodb.com/'>ᴍᴏɴɢᴏ ᴅʙ</a> 
