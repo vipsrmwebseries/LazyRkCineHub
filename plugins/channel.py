@@ -130,7 +130,7 @@ async def send_movie_update(bot, file_name, caption):
         
         # Title Fix: টাইটেল র‍্যাপিং (New Feature)
         title_lines = textwrap.wrap(title, width=32)
-        full_caption += f"│ 📂 𝐓𝐢𝐭𝐥𝐞: <code>{title_line[0]}</code>\n"
+        full_caption += f"│ 📂 𝐓𝐢𝐭𝐥𝐞: <b>{title_lines[0]}</b>\n"
         for line in title_lines[1:]:
              full_caption += f"│        <b>{line}</b>\n"
         
@@ -178,7 +178,7 @@ async def send_movie_update(bot, file_name, caption):
             InlineKeyboardButton(f"👎 {reaction_counts[unique_id]['👎']}", callback_data=f"r_{unique_id}_d"),
             InlineKeyboardButton(f"🔥 {reaction_counts[unique_id]['🔥']}", callback_data=f"r_{unique_id}_f")
         ], [
-            InlineKeyboardButton('📂 Paid Group 📂', url=f'https://t.me/Prime_Movie_YT_Group')
+            InlineKeyboardButton('📂 𝐆𝐄𝐓 𝐅𝐈𝐋𝐄𝐒 📂', url=f'https://cosmofeed.com/vig/6901003d665e510013773eed')
         ]]
 
         if poster:
@@ -229,7 +229,7 @@ async def reaction_handler(client, query):
             InlineKeyboardButton(f"👎 {reaction_counts[unique_id]['👎']}", callback_data=f"r_{unique_id}_d"),
             InlineKeyboardButton(f"🔥 {reaction_counts[unique_id]['🔥']}", callback_data=f"r_{unique_id}_f")
         ],[
-            InlineKeyboardButton('📂 Paid Group 📂', url=f'https://t.me/Prime_Movie_YT_Group')
+            InlineKeyboardButton('📂 𝐆𝐄𝐓 𝐅𝐈𝐋𝐄𝐒 📂', url=f'https://cosmofeed.com/vig/6901003d665e510013773eed')
         ]]
         await query.message.edit_reply_markup(reply_markup=InlineKeyboardMarkup(updated_buttons))
     except Exception as e:
