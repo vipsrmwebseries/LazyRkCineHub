@@ -6,15 +6,15 @@ class script(object):
 ɪᴛ ɪs ᴇᴀsʏ ᴛᴏ ᴜsᴇ ᴍᴇ, ᴊᴜsᴛ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴍᴀᴋᴇ ᴍᴇ ᴀs ᴀᴅᴍɪɴ
 
 
-<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href=https://t.me/Prime_Movie_Request_bot>ʙᴏᴛꜱ</a></blockquote></b>"""
+<blockquote>🌿 ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href=https://t.me/Botmaster55>ʙᴏᴛꜱ</a></blockquote></b>"""
     
     FEATURES_TXT = """<b>ʜᴇʀᴇ ɪꜱ ᴀʟʟ ᴍʏ ꜰᴜɴᴛɪᴏɴꜱ.</b>"""
 
     ABOUT_TXT = """<b>╭────[ ᴍʏ ᴅᴇᴛᴀɪʟs ]────⍟
 ├⍟ ᴍʏ ɴᴀᴍᴇ : <a href=https://t.me/{}>{}</a>
 ├⍟ ᴏᴡɴᴇʀ : <a href={}>ᴘʀɪᴍᴇ</a> 
-├⍟ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/+wLSbBB3m3oBkMzE9'>ʙᴏᴛꜱ</a> 
-├⍟ ᴍᴀɪɴ ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/+IyGqymZL_qtkMTk1'>CɪɴᴇZᴏɴᴇ</a>
+├⍟ ᴜᴘᴅᴀᴛᴇꜱ ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/+rzf7E7jwo001OTg1'>ʙᴏᴛꜱ</a> 
+├⍟ ᴍᴀɪɴ ᴄʜᴀɴɴᴇʟ : <a href='https://t.me/+rzf7E7jwo001OTg1'>CɪɴᴇZᴏɴᴇ</a>
 ├⍟ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ : <a href='https://t.me/Prime_Movie_YT_Group'>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> 
 ├⍟ ʟɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>ᴘʏʀᴏɢʀᴀᴍ</a>
 ├⍟ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>ᴘʏᴛʜᴏɴ 𝟹</a> 
@@ -375,7 +375,7 @@ Nᴀᴍᴇ - {}
  
 ⛽️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ: /myplan
 
-🏷️ <a href='https://t.me/Prime_Movie_Request_bot'>ᴘʀᴇᴍɪᴜᴍ ᴘʀᴏᴏꜰ</a> 👇👇
+🏷️ <a href='https://t.me/Botmaster55'>ᴘʀᴇᴍɪᴜᴍ ᴘʀᴏᴏꜰ</a> 👇👇
 
 ‼️ ᴍᴜsᴛ sᴇɴᴅ sᴄʀᴇᴇɴsʜᴏᴛ ᴀғᴛᴇʀ ᴘᴀʏᴍᴇɴᴛ.
 ‼️ ɢɪᴠᴇ ᴜꜱ ꜱᴏᴍᴇᴛɪᴍᴇ ᴛᴏ ᴀᴅᴅ ʏᴏᴜ ɪɴ ᴘʀᴇᴍɪᴜᴍ ʟɪꜱᴛ.."""
@@ -412,14 +412,14 @@ Nᴀᴍᴇ : {}
 
 Mᴇꜱꜱᴀɢᴇ : <b>{}</b>"""
     
-    CAPTION = """ <b>🗃️ ꜰɪʟᴇ ɴᴀᴍᴇ : @ClipMateBhai <a href='https://t.me/SpyRadioHdMOVIE'>{file_name}</a></b>
+    CAPTION = """ <b>🗃️ ꜰɪʟᴇ ɴᴀᴍᴇ : @ClipMateBhai <a href='https://t.me/+rzf7E7jwo001OTg1'>{file_name}</a></b>
 
 ╭─────────────⍟
 ├📦 ꜰɪʟᴇ sɪᴢᴇ : {file_size} 
 ╰─────────────⍟
 
 <blockquote>╭─━━━━⌁ ᴇɴɢᴀɢᴇ ᴡɪᴛʜ ᴘᴏꜱᴛ ⌁━━━━━─╮
-├⚜️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➠ <a href='https://t.me/SpyRadioHdMOVIE'>ᴄɪɴᴇᴢᴏɴᴇ 🍿</a>
+├⚜️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ➠ <a href='https://t.me/+rzf7E7jwo001OTg1'>ᴄɪɴᴇᴢᴏɴᴇ 🍿</a>
 ╰━━━━━━━━━━━━━━━━━━━━━━━━━╯</blockquote>
 """
     
