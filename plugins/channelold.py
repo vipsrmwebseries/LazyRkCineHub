@@ -47,7 +47,7 @@ async def send_movie_update(bot, file_name, caption):
         clean_name = re.sub(r'\b(?:480|720|1080)[pP]\b', '', clean_name)
         clean_name = re.sub(r'\s{2,}', ' ', clean_name).strip()
 
-        title_line = f"🗃️ @ClipMateBhai {clean_name}"
+        title_line = f"🗃️ @RkCineHub {clean_name}"
 
         year_match = re.search(r"\b(19|20)\d{2}\b", caption)
         year = year_match.group(0) if year_match else None
@@ -84,17 +84,17 @@ async def send_movie_update(bot, file_name, caption):
 ⊰━━❰ 📺 ᴠɪᴅᴇᴏ ǫᴜᴀʟɪᴛʏ 📺 ❱━━⊱
 
 📁 480ᴘ
-🔗 <a href="https://telegram.me/FatherMovieMasala_bot?start=getfile-{search_movie}">https://Prime.com-{title}-480p-{quality}.mkv</a>
+🔗 <a href="https://telegram.me/rkCinehubBot?start=getfile-{search_movie}">https://Prime.com-{title}-480p-{quality}.mkv</a>
 
 📁 720ᴘ
-🔗 <a href="https://telegram.me/FatherMovieMasala_bot?start=getfile-{search_movie}">https://Prime.com-{title}-720p-{quality}.mkv</a>
+🔗 <a href="https://telegram.me/rkcinehunbot?start=getfile-{search_movie}">https://Prime.com-{title}-720p-{quality}.mkv</a>
 
 📁 1080ᴘ
-🔗<a href="https://telegram.me/FatherMovieMasala_bot?start=getfile-{search_movie}">https://Prime.com-{title}-1080p-{quality}.mkv</a>
+🔗<a href="https://telegram.me/rkcinehubbot?start=getfile-{search_movie}">https://Prime.com-{title}-1080p-{quality}.mkv</a>
 
 
 ╭━❰📚 ʜᴏᴡ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴛᴜᴛᴏʀɪᴀʟ ᴠɪᴅᴇᴏ❱━⊱
-┃       <a href='https://t.me/ClipMateBhai'>📥 𝗪𝗔𝗧𝗖𝗛 𝗧𝗨𝗧𝗢𝗥𝗜𝗔𝗟 𝗡𝗢𝗪 ▶️</a>
+┃       <a href='https://t.me/rkcinehub'>📥 𝗪𝗔𝗧𝗖𝗛 𝗧𝗨𝗧𝗢𝗥𝗜𝗔𝗟 𝗡𝗢𝗪 ▶️</a>
 ╰━━━━━━━━━━━━━━━━⊱
 💬 ᴊᴏɪɴ ᴏᴜʀ ᴀʟʟ ᴄʜᴀɴɴᴇʟ & ɢʀᴏᴜᴘꜱ  
 🔗✇ https://t.me/+rzf7E7jwo001OTg1
@@ -121,13 +121,14 @@ async def send_movie_update(bot, file_name, caption):
             InlineKeyboardButton('Get File', url=f'https://telegram.me/FatherMovieMasala_bot?start=getfile-{search_movie}')
         ]]
 
-        image_url = poster or "https://te.legra.ph/file/88d845b4f8a024a71465d.jpg"
+        image_url = poster or "" # poster apne traf se new sample
         
         msg = await bot.send_photo(
                 chat_id=MOVIE_UPDATE_CHANNEL,
                 photo=image_url,
                 caption=full_caption,
-                reply_markup=InlineKeyboardMarkup(buttons)
+                reply_markup=InlineKeyboardMarkup(buttons),
+                has_spoiler=True
         )
 
         msg_id = getattr(msg, 'message_id', None) or getattr(msg, 'id', None)
