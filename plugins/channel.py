@@ -126,7 +126,7 @@ async def send_movie_update(bot, file_name, caption):
 
         # --- 5. NEW DESIGN SECTION (UPDATED LAYOUT) ---
         
-        full_caption = "#𝑵𝒆𝒘_𝑪𝒐𝒏𝒕𝒆𝒏𝒕_𝑨𝒅𝒅𝒆 💌\n\n╭─━━━⌁ 𝘾𝙊𝙉𝙏𝙀𝙉𝙏 𝙄𝙉𝙁𝙊 ⌁━━━─╮\n"
+        full_caption = "#𝑵𝒆𝒘_𝑪𝒐𝒏𝒕𝒆𝒏𝒕_𝑨𝒅𝒅💌\n\n⌁ 𝘾𝙊𝙉𝙏𝙀𝙉𝙏 𝙄𝙉𝙁𝙊 ⌁\n"
         
         # Title Fix: টাইটেল র‍্যাপিং (New Feature)
         title_lines = textwrap.wrap(title, width=32)
@@ -152,7 +152,7 @@ async def send_movie_update(bot, file_name, caption):
             
         # Story Section (Updated Wrapping)
         if poster and overview and len(overview) > 10:
-            full_caption += "├╌╌╌╌╌╌╌ 𝐒𝐓𝐎𝐑𝐘 ╌╌╌╌╌╌╌┤\n"
+            full_caption += "├╌ 𝐒𝐓𝐎𝐑𝐘 ╌┤\n"
             
             short_overview = overview[:300] + "..." if len(overview) > 300 else overview
             # Wrap text to 35 characters (Updated for Mobile)
@@ -162,12 +162,9 @@ async def send_movie_update(bot, file_name, caption):
             for line in word_list:
                 full_caption += f"│ {line}\n"
         
-        full_caption += "╰━━━━━━━━━━━━━━━━━━━━━╯\n\n"
         
         # Engagement Section
-        full_caption += "╭─━━━━⌁ ᴇɴɢᴀɢᴇ ᴡɪᴛʜ ᴘᴏꜱᴛ ⌁━━━━─╮\n"
         full_caption += "┃ ♡ 𝐋𝐢𝐤𝐞  ❍ 𝐂𝐨𝐦𝐦𝐞𝐧𝐭  ⎙ 𝐒𝐚𝐯𝐞  ⌲ 𝐒𝐡𝐚𝐫𝐞\n"
-        full_caption += "╰━━━━━━━━━━━━━━━━━━━━━━━━━╯\n\n"
         
         full_caption += "        ⬇️ <b>Get File Below</b> ⬇️"
 
