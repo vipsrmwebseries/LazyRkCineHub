@@ -120,7 +120,7 @@ async def send_movie_update(bot, file_name, caption):
             InlineKeyboardButton(f"👎 {reaction_counts[unique_id]['👎']}", callback_data=f"r_{unique_id}_d"),
             InlineKeyboardButton(f"🔥 {reaction_counts[unique_id]['🔥']}", callback_data=f"r_{unique_id}_f")
         ],[
-            InlineKeyboardButton("📂 GET FILES", url="https://cosmofeed.com/vig/6901003d665e510013773eed")
+            InlineKeyboardButton("Movie Request group", url="https://t.me/Rk2x_Request")
         ]]
 
         image = backdrop if backdrop else poster
@@ -170,7 +170,7 @@ async def reaction_handler(client, query):
         InlineKeyboardButton(f"👎 {reaction_counts[unique_id]['👎']}", callback_data=f"r_{unique_id}_d"),
         InlineKeyboardButton(f"🔥 {reaction_counts[unique_id]['🔥']}", callback_data=f"r_{unique_id}_f")
     ],[
-        InlineKeyboardButton("📂 GET FILES", url="https://cosmofeed.com/vig/6901003d665e510013773eed")
+        InlineKeyboardButton("Movie Request Group", url="https://t.me/Rk2x_Request")
     ]]
 
     await query.message.edit_reply_markup(InlineKeyboardMarkup(buttons))
