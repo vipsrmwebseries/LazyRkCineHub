@@ -97,11 +97,11 @@ async def send_movie_update(bot, file_name, caption):
 ┃       <a href='https://t.me/rkcinehub'>📥 𝗪𝗔𝗧𝗖𝗛 𝗧𝗨𝗧𝗢𝗥𝗜𝗔𝗟 𝗡𝗢𝗪 ▶️</a>
 ╰━━━━━━━━━━━━━━━━⊱
 💬 ᴊᴏɪɴ ᴏᴜʀ ᴀʟʟ ᴄʜᴀɴɴᴇʟ & ɢʀᴏᴜᴘꜱ  
-🔗✇ https://t.me/+rzf7E7jwo001OTg1
+🔗✇ https://t.me/RkCineHub
 
 ⊰•─•─✦✗✦─•◈•─✦✗✦─•─•⊱
 📡 ᴏғғɪᴄɪᴀʟ ʙᴀᴄᴋᴜᴘ ᴄʜᴀɴɴᴇʟ 🔹  
-🔗 <a href="https://t.me/ClipMateBhai">CɪɴᴇZᴏɴᴇ (ᴏꜰꜰɪᴄɪᴀʟ)</a>
+🔗 <a href="https://t.me/RkCineHub">RkCineHub (ᴏꜰꜰɪᴄɪᴀʟ)</a>
 ⊰━━━━━━━━━━━━━━━━━━━⊱
 🔔 ꜱᴛᴀʏ ᴛᴜɴᴇᴅ ꜰᴏʀ ᴍᴏʀᴇ ᴜᴘᴅᴀᴛᴇꜱ  
 📽️ ɴᴇᴡ ᴍᴏᴠɪᴇꜱ, ꜱᴇʀɪᴇꜱ & ᴍᴏʀᴇ ᴇᴠᴇʀʏ ᴅᴀʏ!  
@@ -118,7 +118,7 @@ async def send_movie_update(bot, file_name, caption):
             InlineKeyboardButton(f"👎 {reaction_counts[unique_id]['👎']}", callback_data=f"r{unique_id}{search_movie}dislike"),
             InlineKeyboardButton(f"🔥 {reaction_counts[unique_id]['🔥']}", callback_data=f"r{unique_id}{search_movie}_fire")
         ], [
-            InlineKeyboardButton('Get File', url=f'https://telegram.me/FatherMovieMasala_bot?start=getfile-{search_movie}')
+            InlineKeyboardButton('Get File', url=f'https://telegram.me/RkCineHubbot?start=getfile-{search_movie}')
         ]]
 
         image_url = poster or "" # poster apne traf se new sample
