@@ -776,7 +776,7 @@ async def handle_actions(client, callback_query):
     "যদি এখনও জয়েন না হয়ে থাকেন, তাহলে নিচের বাটনে ক্লিক করে একবারেই সকল চ্যানেল এবং গ্রুপে জয়েন হতে পারবেন।</i>"
                 )
             keyboard = InlineKeyboardMarkup(
-                [[InlineKeyboardButton("Jᴏɪɴ ᴏᴜʀ ᴀʟʟ ᴄʜᴀɴɴᴇʟs ᴀɴᴅ ɢʀᴏᴜᴘs ɪɴ ᴏɴᴇ ᴄʟɪᴄᴋ", url=f"https://t.me/addlist/1bnWgUqHWuQwNDk1")]]
+                [[InlineKeyboardButton("🔍sᴇᴀʀᴄʜ ʜᴇʀᴇ🔎", url=f"https://t.me/Rk2x_Request")]]
             )
             await client.send_photo(
                 chat_id=user_id,
@@ -889,7 +889,7 @@ async def handle_actions(client, callback_query):
     "নিচের বাটনে ক্লিক করে আপনি সরাসরি এডমিনের সাথে যোগাযোগ করতে পারবেন।</i>"
             )
             keyboard = InlineKeyboardMarkup(  
-                [[InlineKeyboardButton("💬 Cᴏɴᴛᴀᴄᴛ ᴀᴅᴍɪɴ 📞", url=f"https://t.me/Prime_Movie_Request_bot")]]  
+                [[InlineKeyboardButton("💬 Cᴏɴᴛᴀᴄᴛ ᴀᴅᴍɪɴ 📞", url=f"https://t.me/NotRk2xBot")]]  
             )  
             await client.send_photo(  
                 chat_id=user_id,  
@@ -1245,8 +1245,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton("• ᴜɴᴀᴠᴀɪʟᴀʙʟᴇ •", callback_data=f"unalert#{from_user}")
               ]]
         btn2 = [[
-                 InlineKeyboardButton('ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ', url=link.invite_link),
-                 InlineKeyboardButton("ᴠɪᴇᴡ ꜱᴛᴀᴛᴜꜱ", url=f"{query.message.link}")
+                 InlineKeyboardButton('📥ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ📥', url=f"https://t.me/+q4_4N_gRvfo4OGM1"),
+			],
+            [
+                 InlineKeyboardButton("🔍sᴇᴀʀᴄʜ ʜᴇʀᴇ🔎", url=f"https://t.me/Rk2x_Request")
                ]]
         if query.from_user.id in ADMINS:
             user = await client.get_users(from_user)
@@ -1268,8 +1270,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton("• ɴᴏᴛ ʀᴇʟᴇᴀꜱᴇᴅ •", callback_data=f"unalert#{from_user}")
               ]]
         btn2 = [[
-                 InlineKeyboardButton('ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ', url=link.invite_link),
-                 InlineKeyboardButton("ᴠɪᴇᴡ ꜱᴛᴀᴛᴜꜱ", url=f"{query.message.link}")
+                 InlineKeyboardButton('📥ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ📥', url=f"https://t.me/+q4_4N_gRvfo4OGM1"),
+			],
+            [
+                 InlineKeyboardButton("🔍sᴇᴀʀᴄʜ ʜᴇʀᴇ🔎", url=f"https://t.me/Rk2x_Request")
                ]]
         if query.from_user.id in ADMINS:
             user = await client.get_users(from_user)
@@ -1291,8 +1295,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton("• ᴡᴏʀɴɢ ꜱᴘᴇʟʟɪɴɢ •", callback_data=f"unalert#{from_user}")
               ]]
         btn2 = [[
-                 InlineKeyboardButton('ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ', url=link.invite_link),
-                 InlineKeyboardButton("ᴠɪᴇᴡ ꜱᴛᴀᴛᴜꜱ", url=f"{query.message.link}")
+                 InlineKeyboardButton('📥ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ📥', url=f"https://t.me/+q4_4N_gRvfo4OGM1"),
+			],
+            [
+                 InlineKeyboardButton("🔍sᴇᴀʀᴄʜ ʜᴇʀᴇ🔎", url=f"https://t.me/Rk2x_Request")
                ]]
         if query.from_user.id in ADMINS:
             user = await client.get_users(from_user)
@@ -1314,8 +1320,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton("• ɴᴏᴛ ᴀᴠᴀɪʟᴀʙʟᴇ •", callback_data=f"unalert#{from_user}")
               ]]
         btn2 = [[
-                 InlineKeyboardButton('ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ', url=link.invite_link),
-                 InlineKeyboardButton("ᴠɪᴇᴡ ꜱᴛᴀᴛᴜꜱ", url=f"{query.message.link}")
+                 InlineKeyboardButton('📥ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ📥', url=f"https://t.me/+q4_4N_gRvfo4OGM1"),
+			],
+            [
+                 InlineKeyboardButton("🔍sᴇᴀʀᴄʜ ʜᴇʀᴇ🔎", url=f"https://t.me/Rk2x_Request")
                ]]
         if query.from_user.id in ADMINS:
             user = await client.get_users(from_user)
@@ -1337,11 +1345,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton("• ᴜᴘʟᴏᴀᴅᴇᴅ •", callback_data=f"upalert#{from_user}")
               ]]
         btn2 = [[
-                 InlineKeyboardButton('ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ', url=link.invite_link),
-                 InlineKeyboardButton("ᴠɪᴇᴡ ꜱᴛᴀᴛᴜꜱ", url=f"{query.message.link}")
-               ],[
-                 InlineKeyboardButton("🔍 ꜱᴇᴀʀᴄʜ ʜᴇʀᴇ 🔎", url=GRP_LNK)
+                 InlineKeyboardButton('📥ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ📥', url=https://t.me/+q4_4N_gRvfo4OGM1),
+			],
+            [
+                 InlineKeyboardButton("🔍sᴇᴀʀᴄʜ ʜᴇʀᴇ🔎", url=f"https://t.me/Rk2x_Request")
                ]]
+                 
         if query.from_user.id in ADMINS:
             user = await client.get_users(from_user)
             reply_markup = InlineKeyboardMarkup(btn)
@@ -1362,11 +1371,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton("• ᴀʟʀᴇᴀᴅʏ ᴀᴠᴀɪʟᴀʙʟᴇ •", callback_data=f"alalert#{from_user}")
               ]]
         btn2 = [[
-                 InlineKeyboardButton('ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ', url=link.invite_link),
-                 InlineKeyboardButton("ᴠɪᴇᴡ ꜱᴛᴀᴛᴜꜱ", url=f"{query.message.link}")
-               ],[
-                 InlineKeyboardButton("🔍 ꜱᴇᴀʀᴄʜ ʜᴇʀᴇ 🔎", url=GRP_LNK)
+                 InlineKeyboardButton('📥ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ📥', url=f"https://t.me/+q4_4N_gRvfo4OGM1"),
+			],
+            [
+                 InlineKeyboardButton("🔍sᴇᴀʀᴄʜ ʜᴇʀᴇ🔎", url=f"https://t.me/Rk2x_Request")
                ]]
+                 
         if query.from_user.id in ADMINS:
             user = await client.get_users(from_user)
             reply_markup = InlineKeyboardMarkup(btn)
@@ -1458,9 +1468,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                     InlineKeyboardButton('+ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ +', url=f'http://telegram.me/{temp.U_NAME}?startgroup=true')
                 ],[
-                    InlineKeyboardButton('• ᴇᴀʀɴ ᴍᴏɴᴇʏ •', callback_data="earn"),
-                    InlineKeyboardButton('• ᴜᴘɢʀᴀᴅᴇ ᴘʟᴀɴ •', callback_data="premium"),
-                ],[
                     InlineKeyboardButton('• ʜᴇʟᴘ •', callback_data='features'),
                     InlineKeyboardButton('• ᴀʙᴏᴜᴛ ʙᴏᴛᴢ •', callback_data='botz_about')
                 ],[
@@ -1490,8 +1497,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton("• Mᴏᴠɪᴇs Cʜᴀɴɴᴇʟ •", url=CHNL_LNK),
                 InlineKeyboardButton("• ᴀʙᴏᴜᴛ •", callback_data="bot")
 			],[
-                InlineKeyboardButton ("🧑‍💻 sᴏᴜʀᴄᴇ ᴄoᴅᴇ 🧑‍💻", callback_data="source")
-            ],[
                 InlineKeyboardButton("⇋ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ⇋", callback_data="start")
             ]]
             reply_markup = InlineKeyboardMarkup(btn)
@@ -1771,7 +1776,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "bot":
         buttons = [[
             InlineKeyboardButton('‼️ ᴅɪꜱᴄʟᴀɪᴍᴇʀ ‼️', callback_data='disclaimer'),
-            InlineKeyboardButton("🧑‍💻 sᴏᴜʀᴄᴇ ᴄoᴅᴇ 🧑‍💻", callback_data="source"),
         ], [
             InlineKeyboardButton('⇋ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ⇋', callback_data='start')
         ]]
@@ -1786,7 +1790,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "source":
         await query.message.delete()
         buttons = [
-            [InlineKeyboardButton('♚ ᴀᴅᴍɪɴ ♚', url='https://t.me/Prime_Movie_Request_bot')],
+            [InlineKeyboardButton('♚ ᴀᴅᴍɪɴ ♚', url='https://t.me/NotRk2xBot')],
             [InlineKeyboardButton('🚫 ᴄʟᴏꜱᴇ 🚫', callback_data='close_data')]
         ]
         reply_markup = InlineKeyboardMarkup(buttons)
