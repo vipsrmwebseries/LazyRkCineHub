@@ -15,32 +15,32 @@ def is_enabled(value, default):
 
 
 SESSION = environ.get('SESSION', 'media_search')
-API_ID = int(environ.get('API_ID', '23621595'))
-API_HASH = environ.get('API_HASH', 'de904be2b4cd4efe2ea728ded17ca77d')
+API_ID = int(environ.get('API_ID', '21642989'))
+API_HASH = environ.get('API_HASH', '675248dfcc55763f9565a187b456c4b4')
 BOT_TOKEN = environ.get('BOT_TOKEN', "")
 
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
 
-PICS = (environ.get('PICS', 'https://image.zaw-myo.workers.dev/image/98a2c2f9-76f1-41d0-882f-c5892ef84ce3')).split() 
-NOR_IMG = environ.get("NOR_IMG", "https://image.zaw-myo.workers.dev/image/98a2c2f9-76f1-41d0-882f-c5892ef84ce3")
-MELCOW_VID = environ.get("MELCOW_VID", "https://image.zaw-myo.workers.dev/image/98a2c2f9-76f1-41d0-882f-c5892ef84ce3")
-SPELL_IMG = environ.get("SPELL_IMG", "https://image.zaw-myo.workers.dev/image/98a2c2f9-76f1-41d0-882f-c5892ef84ce3")
-SUBSCRIPTION = (environ.get('SUBSCRIPTION', 'https://image.zaw-myo.workers.dev/image/98a2c2f9-76f1-41d0-882f-c5892ef84ce3'))
-FSUB_IMG = (environ.get('FSUB_IMG', 'https://image.zaw-myo.workers.dev/image/98a2c2f9-76f1-41d0-882f-c5892ef84ce3')).split() 
+PICS = (environ.get('PICS', 'https://graph.org/file/919c052667ea70e534958-68202ea1b8cf2155ee.jpg')).split() 
+NOR_IMG = environ.get("NOR_IMG", "https://graph.org/file/e20b5fdaf217252964202.jpg")
+MELCOW_VID = environ.get("MELCOW_VID", "https://graph.org/file/919c052667ea70e534958-68202ea1b8cf2155ee.jpg")
+SPELL_IMG = environ.get("SPELL_IMG", "https://graph.org/file/13702ae26fb05df52667c.jpg")
+SUBSCRIPTION = (environ.get('SUBSCRIPTION', 'https://graph.org/file/242b7f1b52743938d81f1.jpg'))
+FSUB_IMG = (environ.get('FSUB_IMG', 'https://graph.org/file/7478ff3eac37f4329c3d8.jpg')).split() 
 
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '1249672673').split()]  #Admin Id
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002859176889 -1002904920278 -1002539937252').split()] #Movie Database Channel Id
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001860172104'))  #Log Channel Id
-BIN_CHANNEL = int(environ.get('BIN_CHANNEL', '-1001860172104'))  #Streming Log Channel Id
-MOVIE_UPDATE_CHANNEL = int(environ.get('MOVIE_UPDATE_CHANNEL', '-1002314687215'))  #Movie Update Channel Id
-PREMIUM_LOGS = int(environ.get('PREMIUM_LOGS', '-1002294203953')) #Premium Subscription Log Channel Id
-reqst_channel = environ.get('REQST_CHANNEL_ID', '-1002580860502') #Movie Request Channel Id
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6496443693').split()]  #Admin Id
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002351026616').split()] #Movie Database Channel Id
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002932289001'))  #Log Channel Id
+BIN_CHANNEL = int(environ.get('BIN_CHANNEL', '-1002932289001'))  #Streming Log Channel Id
+MOVIE_UPDATE_CHANNEL = int(environ.get('MOVIE_UPDATE_CHANNEL', '-1002932289001'))  #Movie Update Channel Id
+PREMIUM_LOGS = int(environ.get('PREMIUM_LOGS', '-1002932289001')) #Premium Subscription Log Channel Id
+reqst_channel = environ.get('REQST_CHANNEL_ID', '-1002932289001') #Movie Request Channel Id
 REQST_CHANNEL = int(reqst_channel) if reqst_channel and id_pattern.search(reqst_channel) else None
-support_chat_id = environ.get('SUPPORT_CHAT_ID', '-1002395758041') #Support Chat Id
+support_chat_id = environ.get('SUPPORT_CHAT_ID', '-100') #Support Chat Id
 SUPPORT_CHAT_ID = int(support_chat_id) if support_chat_id and id_pattern.search(support_chat_id) else None
 
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://Bot002:Bot002@cluster0665652156.paswdsg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0665652156") #MongoDB Url
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://rahulplive26:rahulplive26@cluster0.xethmkf.mongodb.net/?appName=Cluster0") #MongoDB Url
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'dreamcinezone_files')
 
@@ -48,16 +48,16 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'dreamcinezone_files')
 MULTIPLE_DB = is_enabled(os.environ.get('MULTIPLE_DB', "False"), False) # Type True For Turn On MULTIPLE DB FUNTION 
 DATABASE_URI2 = environ.get('DATABASE_URI2', "")
 
-GRP_LNK = environ.get('GRP_LNK', 'https://cosmofeed.com/vig/6901003d665e510013773eed')
-CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/+IyGqymZL_qtkMTk1')
-OWNER_LNK = environ.get('OWNER_LNK', 'https://t.me/Rimi5605')
-UPDATE_CHANNEL_LNK = environ.get('UPDATE_CHANNEL_LNK', 'https://t.me/+IyGqymZL_qtkMTk1')
-OWNER_BOTZ = environ.get('OWNER_BOTZ', 'https://t.me/Rimi5605')
-OWNER_SUPP = environ.get('OWNER_SUPP', 'https://t.me/Rimi5605')
+GRP_LNK = environ.get('GRP_LNK', 'https://t.me/Rk2x_Request')
+CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/RkCineHub')
+OWNER_LNK = environ.get('OWNER_LNK', 'https://t.me/NotRk2xBot')
+UPDATE_CHANNEL_LNK = environ.get('UPDATE_CHANNEL_LNK', 'https://t.me/+q4_4N_gRvfo4OGM1')
+OWNER_BOTZ = environ.get('OWNER_BOTZ', 'https://t.me/NotRk2xBot')
+OWNER_SUPP = environ.get('OWNER_SUPP', 'https://t.me/NotRk2xBot')
 
 #Force Subscription Channel (Put Same Channel Id In Both Veriables)
-AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', '-1002294203953')) #fell back 0
-AUTH_REQ_CHANNEL = int(environ.get('AUTH_REQ_CHANNEL', '-1002314687215')) #same
+AUTH_CHANNEL = int(environ.get('AUTH_CHANNEL', '-1002932289001')) #fell back 0
+AUTH_REQ_CHANNEL = int(environ.get('AUTH_REQ_CHANNEL', '-1002932289001')) #same
 
 IS_VERIFY = is_enabled('IS_VERIFY', False)
 LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1001860172104')) #Verification Channel Id 
@@ -89,8 +89,8 @@ NO_RESULTS_MSG = bool(environ.get("NO_RESULTS_MSG", True))
 MAX_B_TN = environ.get("MAX_B_TN", "8")
 MAX_BTN = is_enabled((environ.get('MAX_BTN', "True")), True)
 PORT = environ.get("PORT", "8080")
-MSG_ALRT = environ.get('MSG_ALRT', 'Pᴏᴡᴇʀᴇᴅ ʙʏ: @Rimi5605 💙')
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/Rimi5605') #Support Chat Link with https://
+MSG_ALRT = environ.get('MSG_ALRT', 'Pᴏᴡᴇʀᴇᴅ ʙʏ: @RkCineHub 💙')
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/NotRk2xBot') #Support Chat Link with https://
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "True")), True)
 AUTO_FFILTER = is_enabled((environ.get('AUTO_FFILTER', "True")), True)
@@ -104,10 +104,10 @@ LONG_IMDB_DESCRIPTION = is_enabled(environ.get("LONG_IMDB_DESCRIPTION", "True"),
 SPELL_CHECK_REPLY = is_enabled(environ.get("SPELL_CHECK_REPLY", "True"), True)
 MAX_LIST_ELM = environ.get("MAX_LIST_ELM", None)
 INDEX_REQ_CHANNEL = int(environ.get('INDEX_REQ_CHANNEL', LOG_CHANNEL))
-FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '-1002525477015')).split()]
+FILE_STORE_CHANNEL = [int(ch) for ch in (environ.get('FILE_STORE_CHANNEL', '-1002351026616')).split()]
 MELCOW_NEW_USERS = is_enabled((environ.get('MELCOW_NEW_USERS', "True")), False)
 PROTECT_CONTENT = is_enabled((environ.get('PROTECT_CONTENT', "False")), True)
-PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "False")), True)
+PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "False")), False)
 PM_SEARCH = bool(environ.get('PM_SEARCH', True)) 
 EMOJI_MODE = bool(environ.get('EMOJI_MODE', False)) 
 
