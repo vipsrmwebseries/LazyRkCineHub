@@ -83,7 +83,7 @@ async def send_movie_update(bot, file_name, caption):
         quality = await get_qualities(file_name + " " + (caption or "")) or "HDRip"
 
         # ----- PROFESSIONAL CAPTION FORMAT -----
-        full_caption = f"🎬 <b>{title}</b>\n\n"
+        full_caption = f"🎬 <code>{title}</code>\n\n"
         full_caption += f"<b>⭐ Rating:</b> {rating}/10\n"
         full_caption += f"<b>🎭 Genre:</b> {genres}\n"
         full_caption += f"<b>📅 Year:</b> {year}\n"
