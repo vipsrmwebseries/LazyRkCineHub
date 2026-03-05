@@ -1,232 +1,195 @@
 import re
 import hashlib
-import requests
-import textwrap
+import asyncio
+import aiohttp
 from datetime import datetime, timedelta
+from collections import defaultdict
 from info import *
 from utils import *
-from pyrogram import Client, filters
-from database.ia_filterdb import save_file
+from pyrogram import Client, filters, enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from database.ia_filterdb import save_file, unpack_new_file_id
 
-# ---------- GLOBAL STORAGE ----------
-notified_movies = {}
-user_reactions = {}
-reaction_counts = {}
-movie_slugs = {}
+# ---------- CONFIGURATION ----------
+POST_DELAY = 15  # 15 सेकंड इंतज़ार करेगा ताकि सारे एपिसोड्स एक साथ ग्रुप हो सकें
+DEFAULT_POSTER = "https://graph.org/file/919c052667ea70e534958-68202ea1b8cf2155ee.jpg"
+CAPTION_LANGUAGES = ["Hindi", "English", "Tamil", "Telugu", "Kannada", "Malayalam", "Bengali", "Bhojpuri"]
+
+# Global Storage for Grouping
+movie_queue = defaultdict(list)
+processing_titles = set()
+notified_ids = set()
 
 media_filter = filters.document | filters.video | filters.audio
 
 # ---------- MEDIA HANDLER ----------
 @Client.on_message(filters.chat(CHANNELS) & media_filter)
 async def media(bot, message):
-    for file_type in ("document", "video", "audio"):
-        media = getattr(message, file_type, None)
-        if media:
-            break
-    else:
+    media_obj = getattr(message, message.media.value, None)
+    if not media_obj: return
+
+    # Save to Database
+    try:
+        await save_file(media_obj)
+    except:
+        pass
+
+    # Grouping Logic
+    file_name = media_obj.file_name
+    clean_title, is_series = await get_clean_title_advanced(file_name)
+    
+    # Unique Key for Grouping (Title + Year/Season)
+    group_key = f"{clean_title}_{is_series}"
+    
+    file_id, _ = unpack_new_file_id(media_obj.file_id)
+    quality = await get_qualities(file_name + " " + (message.caption or ""))
+    size = format_file_size(media_obj.file_size)
+    
+    movie_queue[group_key].append({
+        "file_id": file_id,
+        "quality": quality,
+        "size": size,
+        "file_name": file_name,
+        "caption": message.caption or ""
+    })
+
+    if group_key in processing_titles:
         return
 
-    media.file_type = file_type
-    media.caption = message.caption
-
-    try:
-        success, _ = await save_file(bot, media)
-    except:
-        await save_file(media)
-        success = True
-
-    if success:
-        await send_movie_update(bot, media.file_name, media.caption)
+    processing_titles.add(group_key)
+    await asyncio.sleep(POST_DELAY) # इंतज़ार करें ताकि एक ही सीरीज के सारे फाइल्स जमा हो जाएं
+    
+    if group_key in movie_queue:
+        await send_professional_update(bot, clean_title, is_series, movie_queue[group_key])
+        del movie_queue[group_key]
+    
+    processing_titles.remove(group_key)
 
 # ---------- SEND UPDATE ----------
-async def send_movie_update(bot, file_name, caption):
+async def send_professional_update(bot, clean_title, is_series, files):
     try:
-        # 1. Sabse pehle title ko clean karein (Professional Look ke liye)
-        clean_title = await get_ultra_clean_title(file_name)
+        # Dual Metadata Fetch (TMDB + IMDb)
+        meta = await fetch_dual_metadata(clean_title)
         
-        link_slug = await get_smart_link_slug(file_name)
-        unique_id = generate_unique_id(link_slug)
+        title = meta.get("title", clean_title)
+        rating = meta.get("rating", "7.5")
+        genres = meta.get("genres", "Action, Adventure")
+        year = meta.get("year", "2024")
+        overview = meta.get("overview", "")
+        image = meta.get("backdrop") or meta.get("poster") or DEFAULT_POSTER
+        
+        kind = "SERIES" if is_series else "MOVIE"
+        
+        # Language detection from first file
+        language = await get_formatted_lang(files[0]['file_name'], files[0]['caption'])
 
-        current_time = datetime.now()
-        if unique_id in notified_movies:
-            if (current_time - notified_movies[unique_id]) < timedelta(days=5):
-                return
-
-        notified_movies[unique_id] = current_time
-        movie_slugs[unique_id] = link_slug
-
-        # Info extraction
-        _, file_year = await extract_info_from_filename(file_name)
-        season_info = await get_only_season(file_name)
-
-        # TMDB Search using Clean Title
-        tmdb_data = await fetch_tmdb_data(clean_title, file_year)
-
-        if tmdb_data and tmdb_data.get("title"):
-            title = tmdb_data.get("title")
-            rating = tmdb_data.get("vote_average", "N/A")
-            genres = tmdb_data.get("genres", "N/A")
-            poster = tmdb_data.get("poster")
-            backdrop = tmdb_data.get("backdrop")
-            overview = tmdb_data.get("overview", "")
-            year = tmdb_data.get("release_date", "")[:4] or file_year
+        # Generate Link Text (Grouping Episodes/Qualities)
+        link_text = ""
+        if is_series:
+            # Series के लिए Episode wise links
+            ep_dict = defaultdict(list)
+            for f in files:
+                ep_match = re.search(r'S(\d+)E(\d+)', f['file_name'], re.I)
+                ep_label = f"S{ep_match.group(1)}E{ep_match.group(2)}" if ep_match else "Batch"
+                ep_dict[ep_label].append(f)
+            
+            for ep, f_list in sorted(ep_dict.items()):
+                links = [f"<a href='https://t.me/{temp.U_NAME}?start=file_0_{f['file_id']}'>{f['quality']}</a>" for f in f_list]
+                link_text += f"📦 <b>{ep}</b> : {' | '.join(links)}\n"
         else:
-            title = clean_title
-            rating = "N/A"
-            genres = "N/A"
-            poster = backdrop = None
-            overview = ""
-            year = file_year
+            # Movie के लिए Quality wise links
+            for f in files:
+                link_text += f"📦 <b>{f['quality']}</b> : <a href='https://t.me/{temp.U_NAME}?start=file_0_{f['file_id']}'>{f['size']}</a>\n"
 
-        language = await get_formatted_language(file_name, caption)
-        quality = await get_qualities(file_name + " " + (caption or "")) or "HDRip"
+        # Caption Formatting
+        full_caption = (
+            f"<blockquote><b>NEW {kind} ADDED ✅</b></blockquote>\n\n"
+            f"<b>📝 Tɪᴛʟᴇ :</b> <code>{title}</code>\n"
+            f"<b>⭐ Rᴀᴛɪɴɢ :</b> <code>{rating}/10</code>\n"
+            f"<b>🎭 Gᴇɴʀᴇ :</b> <code>{genres}</code>\n"
+            f"<b>📟 Yᴇᴀʀ :</b> <code>{year}</code>\n"
+            f"<b>🎥 Aᴜᴅɪᴏ :</b> <code>{language}</code>\n\n"
+            f"{link_text}\n"
+            f"<blockquote><b>⚡ Powered by @RkCineHub</b></blockquote>"
+        )
 
-        # ----- PROFESSIONAL CAPTION FORMAT -----
-        full_caption = f"🎬 <code>{title}</code>\n\n"
-        full_caption += f"<b>⭐ Rating:</b> {rating}/10\n"
-        full_caption += f"<b>🎭 Genre:</b> {genres}\n"
-        full_caption += f"<b>📅 Year:</b> {year}\n"
-        full_caption += f"<b>💎 Quality:</b> {quality}\n"
-        full_caption += f"<b>🔊 Audio:</b> {language}\n"
+        buttons = [[InlineKeyboardButton("🔎 Tap to Search", url="https://t.me/Rk2x_Request")]]
 
-        if season_info:
-            full_caption += f"<b>📺 Info:</b> {season_info}\n"
-
-        if overview:
-            full_caption += f"\n<b>📝 Story:</b> <i>{overview[:150]}...</i>\n"
-
-        full_caption += "\n📥 <b>Click the buttons below to get files</b>"
-
-        # ----- REACTION SYSTEM -----
-        if unique_id not in reaction_counts:
-            reaction_counts[unique_id] = {"❤️": 0, "👍": 0, "👎": 0, "🔥": 0}
-            user_reactions[unique_id] = {}
-
-        buttons = [[
-            InlineKeyboardButton(f"❤️ {reaction_counts[unique_id]['❤️']}", callback_data=f"r_{unique_id}_h"),
-            InlineKeyboardButton(f"👍 {reaction_counts[unique_id]['👍']}", callback_data=f"r_{unique_id}_l"),
-            InlineKeyboardButton(f"👎 {reaction_counts[unique_id]['👎']}", callback_data=f"r_{unique_id}_d"),
-            InlineKeyboardButton(f"🔥 {reaction_counts[unique_id]['🔥']}", callback_data=f"r_{unique_id}_f")
-        ],[
-            InlineKeyboardButton("✨ Join Movie Request Group", url="https://t.me/Rk2x_Request")
-        ]]
-
-        image = backdrop if backdrop else poster
-
-        if image:
-            await bot.send_photo(MOVIE_UPDATE_CHANNEL, image, caption=full_caption, reply_markup=InlineKeyboardMarkup(buttons))
-        else:
-            await bot.send_message(MOVIE_UPDATE_CHANNEL, full_caption, reply_markup=InlineKeyboardMarkup(buttons))
+        await bot.send_photo(
+            MOVIE_UPDATE_CHANNEL,
+            photo=image,
+            caption=full_caption,
+            parse_mode=enums.ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(buttons),
+            has_spoiler=True
+        )
 
     except Exception as e:
         print(f"Update Error: {e}")
 
-# ---------- REACTION HANDLER ----------
-@Client.on_callback_query(filters.regex(r"^r_"))
-async def reaction_handler(client, query):
-    data = query.data.split("_")
-    unique_id, code = data[1], data[2]
-    user_id = query.from_user.id
-    emoji_map = {"h": "❤️", "l": "👍", "d": "👎", "f": "🔥"}
-    emoji = emoji_map[code]
+# ---------- DATA ENGINES ----------
+async def fetch_dual_metadata(query):
+    meta = {}
+    # TMDB Search (Priority for Images)
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f"https://api.themoviedb.org/3/search/multi?api_key={TMDB_API}&query={query}") as res:
+                data = await res.json()
+                if data.get("results"):
+                    res = data["results"][0]
+                    m_type = res['media_type']
+                    async with session.get(f"https://api.themoviedb.org/3/{m_type}/{res['id']}?api_key={TMDB_API}") as det:
+                        d = await det.json()
+                        meta = {
+                            "title": d.get("title") or d.get("name"),
+                            "rating": str(round(d.get("vote_average", 0), 1)),
+                            "genres": ", ".join([g["name"] for g in d.get("genres", [])[:2]]),
+                            "year": (d.get("release_date") or d.get("first_air_date") or "2024")[:4],
+                            "overview": d.get("overview", ""),
+                            "poster": f"https://image.tmdb.org/t/p/w500{d.get('poster_path')}" if d.get('poster_path') else None,
+                            "backdrop": f"https://image.tmdb.org/t/p/w1280{d.get('backdrop_path')}" if d.get('backdrop_path') else None
+                        }
+    except: pass
 
-    if user_id in user_reactions.get(unique_id, {}):
-        if user_reactions[unique_id][user_id] == emoji:
-            return await query.answer("Already reacted!", show_alert=False)
-        old_emoji = user_reactions[unique_id][user_id]
-        reaction_counts[unique_id][old_emoji] -= 1
+    # IMDb Fallback (OMDb) if rating is 0 or title not found
+    if not meta.get("title") or meta.get("rating") == "0.0":
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(f"http://www.omdbapi.com/?apikey={OMDB_API_KEY}&t={query}") as res:
+                    d = await res.json()
+                    if d.get("Response") == "True":
+                        meta["title"] = d.get("Title")
+                        meta["rating"] = d.get("imdbRating")
+                        meta["genres"] = d.get("Genre")
+                        meta["year"] = d.get("Year")
+                        if not meta.get("poster"): meta["poster"] = d.get("Poster")
+        except: pass
+    return meta
 
-    user_reactions.setdefault(unique_id, {})[user_id] = emoji
-    reaction_counts[unique_id][emoji] += 1
-
-    buttons = [[
-        InlineKeyboardButton(f"❤️ {reaction_counts[unique_id]['❤️']}", callback_data=f"r_{unique_id}_h"),
-        InlineKeyboardButton(f"👍 {reaction_counts[unique_id]['👍']}", callback_data=f"r_{unique_id}_l"),
-        InlineKeyboardButton(f"👎 {reaction_counts[unique_id]['👎']}", callback_data=f"r_{unique_id}_d"),
-        InlineKeyboardButton(f"🔥 {reaction_counts[unique_id]['🔥']}", callback_data=f"r_{unique_id}_f")
-    ],[
-        InlineKeyboardButton("✨ Join Movie Request Group", url="https://t.me/Rk2x_Request")
-    ]]
-    await query.message.edit_reply_markup(InlineKeyboardMarkup(buttons))
-
-# ---------- HELPERS (CLEANING LOGIC) ----------
-async def get_ultra_clean_title(filename):
-    """Filename se quality, year, group sab hata kar clean title deta hai"""
-    name = re.sub(r'\.[a-zA-Z0-9]+$', '', filename) # Remove extension
-    # Junk patterns to remove
-    junk = [
-        r'\d{3,4}p', r'bluray', r'web-?dl', r'webrip', r'hdrip', r'x264', r'x265', 
-        r'hevc', r'10bit', r'dual[- ]audio', r'hindi', r'english', r'esub', r'sub', 
-        r'clean', r'hc', r'aac', r'dts', r'dd5\.1', r'upscaled', r'confirm'
-    ]
-    for pattern in junk:
-        name = re.sub(pattern, '', name, flags=re.I)
-    
-    # Symbols ko space se badlein
+# ---------- HELPERS ----------
+async def get_clean_title_advanced(name):
+    name = re.sub(r'http\S+|@\w+|#\w+', '', name).lower()
+    is_series = bool(re.search(r's\d+|season|ep\s*\d+', name, re.I))
+    # Junk Cleaning
+    name = re.sub(r'\d{3,4}p|bluray|web-?dl|hdrip|hevc|x264|x265|dual|hindi|english|esub|sub|\.', ' ', name)
     name = re.sub(r'[._\-\(\)\[\]]', ' ', name)
-    
-    # Agar year hai toh uske aage ka sab delete
+    # Extract Title before Year
     match = re.search(r'\b(19|20)\d{2}\b', name)
-    if match:
-        name = name[:match.start()]
-    
-    return " ".join(name.split()).title()
+    if match: name = name[:match.start()]
+    return " ".join(name.split()).title(), is_series
 
-async def extract_info_from_filename(filename):
-    clean = re.sub(r'\.\w+$', '', filename)
-    words = re.sub(r'[._\-]', ' ', clean).split()
-    title, year = [], "N/A"
-    for word in words:
-        if re.match(r'^(19|20)\d{2}$', word):
-            year = word
-            break
-        title.append(word)
-    return " ".join(title), year
-
-async def get_only_season(text):
-    match = re.search(r'(?:S|Season)\s*(\d+)', text, re.I)
-    return f"Season {match.group(1)}" if match else None
-
-async def get_smart_link_slug(filename):
-    clean = re.sub(r'[^a-zA-Z0-9 ]', '', filename).split()[:4]
-    return "-".join(clean)
-
-async def get_formatted_language(filename, caption):
-    text = (filename + " " + (caption or "")).lower()
-    langs = []
-    if "hindi" in text: langs.append("Hindi")
-    if "english" in text: langs.append("English")
+async def get_formatted_lang(filename, caption):
+    text = (filename + " " + caption).lower()
+    langs = [l for l in CAPTION_LANGUAGES if l.lower() in text]
     return " | ".join(langs) if langs else "Hindi"
 
 async def get_qualities(text):
-    text = text.lower()
-    if "bluray" in text: return "BluRay"
-    if "web" in text: return "WEBRip"
-    if "hdrip" in text: return "HDRip"
-    return "WEB-DL"
+    for q in ["2160p", "1080p", "720p", "480p", "HDCAM"]:
+        if q.lower() in text.lower(): return q
+    return "HDRip"
 
-# ---------- TMDB ----------
-async def fetch_tmdb_data(query, year=None):
-    try:
-        params = {"api_key": TMDB_API, "query": query}
-        if year and year != "N/A":
-            params["year"] = year
-        r = requests.get("https://api.themoviedb.org/3/search/movie", params=params).json()
-        if not r.get("results"):
-            return {}
-        movie = r["results"][0]
-        details = requests.get(f"https://api.themoviedb.org/3/movie/{movie['id']}?api_key={TMDB_API}").json()
-        return {
-            "title": details.get("title"),
-            "overview": details.get("overview"),
-            "vote_average": round(details.get("vote_average", 0), 1),
-            "genres": ", ".join([g["name"] for g in details.get("genres", [])][:2]),
-            "release_date": details.get("release_date"),
-            "poster": f"https://image.tmdb.org/t/p/w500{details.get('poster_path')}" if details.get("poster_path") else None,
-            "backdrop": f"https://image.tmdb.org/t/p/w780{details.get('backdrop_path')}" if details.get("backdrop_path") else None
-        }
-    except: return {}
-
-def generate_unique_id(name):
-    return hashlib.md5(name.encode()).hexdigest()[:5]
+def format_file_size(size):
+    for unit in ["B", "KB", "MB", "GB"]:
+        if size < 1024: return f"{size:.1f}{unit}"
+        size /= 1024
+    return f"{size:.1f}TB"
