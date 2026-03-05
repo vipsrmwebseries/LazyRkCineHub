@@ -415,9 +415,9 @@ Mᴇꜱꜱᴀɢᴇ : <b>{}</b>"""
     CAPTION = """<blockquote><b>🗃️ ꜰɪʟᴇ ɴᴀᴍᴇ : <a href='https://t.me/+q4_4N_gRvfo4OGM1'>{file_name}</a></b></blockquote>
 <b>ғɪʟᴇ sɪᴢᴇ ✓ {file_size}</b>
 
-<b>ᴊᴏɪɴ ɢʀᴏᴜᴘ ✈︎ @Rk2x_Request </b>
-<b>ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ ✈︎ @RkCineHub </b>
-<b>sᴜᴘᴘᴏʀᴛ ✈︎ @NotRk2xBot </b>
+<b>ᴊᴏɪɴ ɢʀᴏᴜᴘ ➠ @Rk2x_Request </b>
+<b>ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ ➠ @RkCineHub </b>
+<b>sᴜᴘᴘᴏʀᴛ ➠  @NotRk2xBot </b>
 """
     IMDB_TEMPLATE_TXT = """
 <b>🏷 Title</b>: <a href={url}>{title}</a>
