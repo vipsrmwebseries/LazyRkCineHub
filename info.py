@@ -84,6 +84,7 @@ THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "43200"))
 
 #Othes
 TMDB_API = environ.get("TMDB_API", "ef6c6375cae3e583606e8ac21c964a88")
+OMDB_API_KEY = environ.get("OMDB_API_KEY", "f80de67e")
 MOVIE_UPDATE_NOTIFICATION = bool(environ.get("MOVIE_UPDATE_NOTIFICATION", True)) #suggested not to turn on here , do with command /movie_update on
 NO_RESULTS_MSG = bool(environ.get("NO_RESULTS_MSG", True))
 MAX_B_TN = environ.get("MAX_B_TN", "8")
