@@ -94,8 +94,13 @@ async def send_professional_update(bot, clean_title, is_series, files):
                 ep_dict[ep_label].append(f)
             
             for ep, f_list in sorted(ep_dict.items()):
-                links = [f"<a href='https://t.me/{temp.U_NAME}?start=file_0_{f['file_id']}'>{f['quality']}</a>" for f in f_list]
-                link_text += f"📦 <b>{ep}</b> : {' | '.join(links)}\n"
+                if ep == "Batch":
+                    # Batch waale section se links hata diye gaye hain, sirf text dikhega
+                    qualities = [f"{f['quality']}" for f in f_list]
+                    link_text += f"📦 <b>{ep}</b> : {' | '.join(qualities)}\n"
+                else:
+                    links = [f"<a href='https://t.me/{temp.U_NAME}?start=file_0_{f['file_id']}'>{f['quality']}</a>" for f in f_list]
+                    link_text += f"📦 <b>{ep}</b> : {' | '.join(links)}\n"
         else:
             # Movie के लिए Quality wise links
             for f in files:
@@ -113,7 +118,13 @@ async def send_professional_update(bot, clean_title, is_series, files):
             f"<blockquote><b>⚡ Powered by @RkCineHub</b></blockquote>"
         )
 
-        buttons = [[InlineKeyboardButton("🔎 Tap to Search", url="https://t.me/Rk2x_Request")]]
+        # Search query for "Get File" button
+        search_url = f"https://t.me/{temp.U_NAME}?start=search_{title.replace(' ', '+')}"
+        
+        buttons = [
+            [InlineKeyboardButton("📥 Get File", url=search_url)],
+            [InlineKeyboardButton("🔎 Tap to Search", url="https://t.me/Rk2x_Request")]
+        ]
 
         await bot.send_photo(
             MOVIE_UPDATE_CHANNEL,
