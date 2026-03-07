@@ -68,14 +68,13 @@ async def media(bot, message):
 # ---------- SEND UPDATE ----------
 async def send_professional_update(bot, clean_title, is_series, files):
     try:
-        # Dual Metadata Fetch (TMDB + IMDb)
+        # Dual Metadata Fetch (TMDB + IMDb) - Yahan se auto details aayengi
         meta = await fetch_dual_metadata(clean_title)
         
         title = meta.get("title", clean_title)
-        rating = meta.get("rating", "7.5")
-        genres = meta.get("genres", "Action, Adventure")
+        rating = meta.get("rating", "N/A")
+        genres = meta.get("genres", "N/A")
         year = meta.get("year", "2024")
-        overview = meta.get("overview", "")
         image = meta.get("backdrop") or meta.get("poster") or DEFAULT_POSTER
         
         kind = "SERIES" if is_series else "MOVIE"
@@ -83,10 +82,9 @@ async def send_professional_update(bot, clean_title, is_series, files):
         # Language detection from first file
         language = await get_formatted_lang(files[0]['file_name'], files[0]['caption'])
 
-        # Generate Link Text (Grouping Episodes/Qualities)
+        # Generate Link Text
         link_text = ""
         if is_series:
-            # Series के लिए Episode wise links
             ep_dict = defaultdict(list)
             for f in files:
                 ep_match = re.search(r'S(\d+)E(\d+)', f['file_name'], re.I)
@@ -95,32 +93,29 @@ async def send_professional_update(bot, clean_title, is_series, files):
             
             for ep, f_list in sorted(ep_dict.items()):
                 if ep == "Batch":
-                    # Batch waale section se links hata diye gaye hain, sirf text dikhega
+                    # Batch ke liye links hata diye gaye hain
                     qualities = [f"{f['quality']}" for f in f_list]
                     link_text += f"📦 <b>{ep}</b> : {' | '.join(qualities)}\n"
                 else:
                     links = [f"<a href='https://t.me/{temp.U_NAME}?start=file_0_{f['file_id']}'>{f['quality']}</a>" for f in f_list]
                     link_text += f"📦 <b>{ep}</b> : {' | '.join(links)}\n"
         else:
-            # Movie के लिए Quality wise links
             for f in files:
                 link_text += f"📦 <b>{f['quality']}</b> : <a href='https://t.me/{temp.U_NAME}?start=file_0_{f['file_id']}'>{f['size']}</a>\n"
 
         # Caption Formatting
         full_caption = (
             f"<blockquote><b>NEW {kind} ADDED ✅</b></blockquote>\n\n"
-            f"<b>📝 Tɪᴛʟᴇ :</b> <code>{title}</code>\n"
-            f"<b>⭐ Rᴀᴛɪɴɢ :</b> <code>{rating}/10</code>\n"
-            f"<b>🎭 Gᴇɴʀᴇ :</b> <code>{genres}</code>\n"
-            f"<b>📟 Yᴇᴀʀ :</b> <code>{year}</code>\n"
-            f"<b>🎥 Aᴜᴅɪᴏ :</b> <code>{language}</code>\n\n"
+            f"📝 <b>Tɪᴛʟᴇ :</b> <code>{title}</code>\n"
+            f"⭐ <b>Rᴀᴛɪɴɢ :</b> <code>{rating}/10</code>\n"
+            f"🎭 <b>Gᴇɴʀᴇ :</b> <code>{genres}</code>\n"
+            f"📟 <b>Yᴇᴀʀ :</b> <code>{year}</code>\n"
+            f"🎥 <b>Aᴜᴅɪᴏ :</b> <code>{language}</code>\n\n"
             f"{link_text}\n"
             f"<blockquote><b>⚡ Powered by @RkCineHub</b></blockquote>"
         )
 
-        # Search query for "Get File" button
         search_url = f"https://t.me/{temp.U_NAME}?start=search_{title.replace(' ', '+')}"
-        
         buttons = [
             [InlineKeyboardButton("📥 Get File", url=search_url)],
             [InlineKeyboardButton("🔎 Tap to Search", url="https://t.me/Rk2x_Request")]
@@ -141,7 +136,6 @@ async def send_professional_update(bot, clean_title, is_series, files):
 # ---------- DATA ENGINES ----------
 async def fetch_dual_metadata(query):
     meta = {}
-    # TMDB Search (Priority for Images)
     try:
         async with aiohttp.ClientSession() as session:
             async with session.get(f"https://api.themoviedb.org/3/search/multi?api_key={TMDB_API}&query={query}") as res:
@@ -156,13 +150,11 @@ async def fetch_dual_metadata(query):
                             "rating": str(round(d.get("vote_average", 0), 1)),
                             "genres": ", ".join([g["name"] for g in d.get("genres", [])[:2]]),
                             "year": (d.get("release_date") or d.get("first_air_date") or "2024")[:4],
-                            "overview": d.get("overview", ""),
                             "poster": f"https://image.tmdb.org/t/p/w500{d.get('poster_path')}" if d.get('poster_path') else None,
                             "backdrop": f"https://image.tmdb.org/t/p/w1280{d.get('backdrop_path')}" if d.get('backdrop_path') else None
                         }
     except: pass
 
-    # IMDb Fallback (OMDb) if rating is 0 or title not found
     if not meta.get("title") or meta.get("rating") == "0.0":
         try:
             async with aiohttp.ClientSession() as session:
@@ -181,10 +173,8 @@ async def fetch_dual_metadata(query):
 async def get_clean_title_advanced(name):
     name = re.sub(r'http\S+|@\w+|#\w+', '', name).lower()
     is_series = bool(re.search(r's\d+|season|ep\s*\d+', name, re.I))
-    # Junk Cleaning
     name = re.sub(r'\d{3,4}p|bluray|web-?dl|hdrip|hevc|x264|x265|dual|hindi|english|esub|sub|\.', ' ', name)
     name = re.sub(r'[._\-\(\)\[\]]', ' ', name)
-    # Extract Title before Year
     match = re.search(r'\b(19|20)\d{2}\b', name)
     if match: name = name[:match.start()]
     return " ".join(name.split()).title(), is_series
