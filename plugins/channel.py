@@ -11,12 +11,14 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from database.ia_filterdb import save_file, unpack_new_file_id
 
 # ---------- CONFIGURATION ----------
-POST_DELAY = 15 
+POST_DELAY = 15  # 15 सेकंड इंतज़ार करेगा ताकि सारे एपिसोड्स एक साथ ग्रुप हो सकें
 DEFAULT_POSTER = "https://graph.org/file/919c052667ea70e534958-68202ea1b8cf2155ee.jpg"
 CAPTION_LANGUAGES = ["Hindi", "English", "Tamil", "Telugu", "Kannada", "Malayalam", "Bengali", "Bhojpuri"]
 
+# Global Storage for Grouping
 movie_queue = defaultdict(list)
 processing_titles = set()
+notified_ids = set()
 
 media_filter = filters.document | filters.video | filters.audio
 
@@ -26,13 +28,17 @@ async def media(bot, message):
     media_obj = getattr(message, message.media.value, None)
     if not media_obj: return
 
+    # Save to Database
     try:
         await save_file(media_obj)
     except:
         pass
 
+    # Grouping Logic
     file_name = media_obj.file_name
     clean_title, is_series = await get_clean_title_advanced(file_name)
+    
+    # Unique Key for Grouping (Title + Year/Season)
     group_key = f"{clean_title}_{is_series}"
     
     file_id, _ = unpack_new_file_id(media_obj.file_id)
@@ -51,7 +57,7 @@ async def media(bot, message):
         return
 
     processing_titles.add(group_key)
-    await asyncio.sleep(POST_DELAY) 
+    await asyncio.sleep(POST_DELAY) # इंतज़ार करें ताकि एक ही सीरीज के सारे फाइल्स जमा हो जाएं
     
     if group_key in movie_queue:
         await send_professional_update(bot, clean_title, is_series, movie_queue[group_key])
@@ -62,16 +68,21 @@ async def media(bot, message):
 # ---------- SEND UPDATE ----------
 async def send_professional_update(bot, clean_title, is_series, files):
     try:
+        # Dual Metadata Fetch (TMDB + IMDb) - Yahan se auto details aayengi
         meta = await fetch_dual_metadata(clean_title)
+        
         title = meta.get("title", clean_title)
         rating = meta.get("rating", "N/A")
         genres = meta.get("genres", "N/A")
-        year = meta.get("year", "2025")
+        year = meta.get("year", "2024")
         image = meta.get("backdrop") or meta.get("poster") or DEFAULT_POSTER
         
         kind = "SERIES" if is_series else "MOVIE"
+        
+        # Language detection from first file
         language = await get_formatted_lang(files[0]['file_name'], files[0]['caption'])
 
+        # Generate Link Text
         link_text = ""
         if is_series:
             ep_dict = defaultdict(list)
@@ -81,12 +92,18 @@ async def send_professional_update(bot, clean_title, is_series, files):
                 ep_dict[ep_label].append(f)
             
             for ep, f_list in sorted(ep_dict.items()):
-                links = [f"<a href='https://t.me/{temp.U_NAME}?start=file_0_{f['file_id']}'>{f['quality']}</a>" for f in f_list]
-                link_text += f"📦 <b>{ep}</b> : {' | '.join(links)}\n"
+                if ep == "Batch":
+                    # Batch ke liye links hata diye gaye hain
+                    qualities = [f"{f['quality']}" for f in f_list]
+                    link_text += f"📦 <b>{ep}</b> : {' | '.join(qualities)}\n"
+                else:
+                    links = [f"<a href='https://t.me/{temp.U_NAME}?start=file_0_{f['file_id']}'>{f['quality']}</a>" for f in f_list]
+                    link_text += f"📦 <b>{ep}</b> : {' | '.join(links)}\n"
         else:
             for f in files:
                 link_text += f"📦 <b>{f['quality']}</b> : <a href='https://t.me/{temp.U_NAME}?start=file_0_{f['file_id']}'>{f['size']}</a>\n"
 
+        # Caption Formatting
         full_caption = (
             f"<blockquote><b>NEW {kind} ADDED ✅</b></blockquote>\n\n"
             f"📝 <b>Tɪᴛʟᴇ :</b> <code>{title}</code>\n"
@@ -98,13 +115,10 @@ async def send_professional_update(bot, clean_title, is_series, files):
             f"<blockquote><b>⚡ Powered by @RkCineHub</b></blockquote>"
         )
 
-        # FIX: Search Query Link (Safe for Telegram)
-        search_movie = re.sub(r'[^a-z0-9\s]', '', title.lower()).strip().replace(' ', '-')
-        search_url = f"https://t.me/{temp.U_NAME}?start=getfile-{search_movie[:30]}"
-
+        search_url = f"https://telegram.me/{temp.U_NAME}?start=getfile-{search_movie}"
         buttons = [
-            [InlineKeyboardButton("📥 Get All Files", url=search_url)],
-            [InlineKeyboardButton("🔎 Manual Search", url="https://t.me/Rk2x_Request")]
+            [InlineKeyboardButton("📥 Get File", url=search_url)],
+            [InlineKeyboardButton("🔎 Tap to Search", url="https://t.me/Rk2x_Request")]
         ]
 
         await bot.send_photo(
@@ -112,7 +126,8 @@ async def send_professional_update(bot, clean_title, is_series, files):
             photo=image,
             caption=full_caption,
             parse_mode=enums.ParseMode.HTML,
-            reply_markup=InlineKeyboardMarkup(buttons)
+            reply_markup=InlineKeyboardMarkup(buttons),
+            has_spoiler=True
         )
 
     except Exception as e:
@@ -134,11 +149,24 @@ async def fetch_dual_metadata(query):
                             "title": d.get("title") or d.get("name"),
                             "rating": str(round(d.get("vote_average", 0), 1)),
                             "genres": ", ".join([g["name"] for g in d.get("genres", [])[:2]]),
-                            "year": (d.get("release_date") or d.get("first_air_date") or "2025")[:4],
+                            "year": (d.get("release_date") or d.get("first_air_date") or "2024")[:4],
                             "poster": f"https://image.tmdb.org/t/p/w500{d.get('poster_path')}" if d.get('poster_path') else None,
                             "backdrop": f"https://image.tmdb.org/t/p/w1280{d.get('backdrop_path')}" if d.get('backdrop_path') else None
                         }
     except: pass
+
+    if not meta.get("title") or meta.get("rating") == "0.0":
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(f"http://www.omdbapi.com/?apikey={OMDB_API_KEY}&t={query}") as res:
+                    d = await res.json()
+                    if d.get("Response") == "True":
+                        meta["title"] = d.get("Title")
+                        meta["rating"] = d.get("imdbRating")
+                        meta["genres"] = d.get("Genre")
+                        meta["year"] = d.get("Year")
+                        if not meta.get("poster"): meta["poster"] = d.get("Poster")
+        except: pass
     return meta
 
 # ---------- HELPERS ----------
